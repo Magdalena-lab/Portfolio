@@ -4,15 +4,65 @@
   <meta charset="UTF-8">
   <title>HubSpot Workflow Project</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    img, video { max-width: 100%; margin-bottom: 20px; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 800px;
+      width: 90%;
+      background: white;
+      padding: 40px;
+      margin: 40px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #2F4F4F;
+      margin-bottom: 20px;
+    }
+    img, video {
+      max-width: 100%;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    ul {
+      text-align: left;
+      margin-left: 20px;
+    }
   </style>
 </head>
 <body>
-  <h1>HubSpot Workflow Automation</h1>
-  <p>This project demonstrates my job search workflow automation in HubSpot.</p>
+  <div class="container">
+    <h1>HubSpot Workflow Automation</h1>
+    <p>This project demonstrates my job search workflow automation in HubSpot, tracking applications, follow-ups, and outcomes efficiently.</p>
 
-  <img src="../assets/screenshot1.png" alt="Workflow Screenshot">
-  <video controls src="../assets/workflow1.mp4"></video>
+    <img src="../assets/screenshot1.png" alt="Workflow Screenshot">
+    <video controls src="../assets/workflow1.mp4"></video>
+
+    <p><strong>Workflow Objective:</strong> Automatically track applications with no response.</p>
+    <p><strong>Logic:</strong> Deals in the Application stage with no activity for 14 days are automatically moved to No Response.</p>
+    <p><strong>Purpose:</strong> Prevents opportunities from stagnating and helps prioritize follow-ups.</p>
+
+    <p><strong>Insights:</strong></p>
+    <ul>
+      <li>Track application status efficiently</li>
+      <li>Analyze patterns of invitations, rejections, and offers</li>
+      <li>Maintain structured records for personal tracking and reporting</li>
+    </ul>
+  </div>
 </body>
 </html>
