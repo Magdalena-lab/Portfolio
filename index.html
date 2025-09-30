@@ -26,25 +26,29 @@
 
     /* Intro row */
     .intro-container {
-      display: flex;
-      align-items: flex-start;   /* top align image + text */
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 250px 1fr; /* photo column + text column */
       gap: 40px;
-      flex-wrap: wrap;           /* stack on small screens */
+      align-items: start; /* top aligned */
       width: 100%;
     }
 
+
     .intro-image img {
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 20px;       /* square with rounded corners */
+      width: 220px;  /* slightly smaller */
+      height: auto;  /* keep aspect ratio */
+      border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      object-fit: contain;  /* show whole head */
+      background: #fff;     /* in case aspect ratio doesn’t fill */
+      padding: 5px;         /* optional, creates spacing around */
     }
 
-    .intro-text {
-      max-width: 600px;
-      text-align: left;
+    .intro-text { 
+      display: flex;
+      flex-direction: column;
+      gap: 15px; /* spacing between title, subtitle, description */
+}
     }
 
     h1 {
@@ -70,10 +74,9 @@
 
    /* Projects section */
     .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
+      margin-top: 60px;
       width: 100%;
+}
     }
 
     .card {
