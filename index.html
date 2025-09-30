@@ -5,50 +5,50 @@
   <title>Hello! I am Magdalena</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
-      body {
+    body {
       margin: 0;
       background: #f5f5f5;
       display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      align-items: center;
+      justify-content: center;  /* center main container */
       padding: 40px 20px;
     }
-      /* Intro + projects wrapper */
-    .intro-section {
-      max-width: 1000px;
+
+    .container {
+      max-width: 1100px;  /* keeps everything in the middle */
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 50px; /* space between intro and projects */
+      gap: 60px;
     }
 
     /* Intro row */
     .intro-container {
-      display: grid;
-      grid-template-columns: 250px 1fr; /* photo column + text column */
-      gap: 40px;
-      align-items: start; /* top aligned */
+      display: flex;
+      gap: 50px;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap; /* stack on small screens */
       width: 100%;
     }
 
-
     .intro-image img {
-      width: 220px;  /* slightly smaller */
-      height: auto;  /* keep aspect ratio */
+      width: 220px;
+      height: auto;
+      object-fit: contain;   /* keep full head */
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      object-fit: contain;  /* show whole head */
-      background: #fff;     /* in case aspect ratio doesn’t fill */
-      padding: 5px;         /* optional, creates spacing around */
+      background: #fff;
+      padding: 5px;
     }
 
-    .intro-text { 
+    .intro-text {
+      flex: 1;
+      max-width: 600px;
       display: flex;
       flex-direction: column;
-      gap: 15px; /* spacing between title, subtitle, description */
-}
+      gap: 15px;
+      text-align: left;
     }
 
     h1 {
@@ -72,19 +72,22 @@
       color: #555;
     }
 
-   /* Projects section */
+    /* Projects section */
     .projects {
-      margin-top: 60px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center; /* center the cards */
       width: 100%;
-}
     }
 
     .card {
+      flex: 1 1 300px;  /* grow/shrink but minimum 300px */
+      max-width: 320px;
       background: white;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
-      overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
@@ -124,43 +127,50 @@
     @media (max-width: 500px) {
       .intro-image img {
         width: 180px;
-        height: 180px;
+        height: auto;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="intro-container">
-    <div class="intro-image">
-      <img src="assets/portfolio photo.jpg" alt="Magdalena">
+  <div class="container">
+
+    <div class="intro-container">
+      <div class="intro-image">
+        <img src="assets/portfolio photo.jpg" alt="Magdalena">
+      </div>
+      <div class="intro-text">
+        <h1>Hello! I am Magdalena</h1>
+        <p class="subtitle">
+          CRM & Data Specialist <br> Solving problems through simplicity
+        </p>
+        <p class="about">
+          With a Master’s in Social Psychology and experience bridging business and technical teams, I am a CRM and Data Specialist skilled in Salesforce 
+          and process improvement. I turn complex data and business needs into clear, actionable solutions that drive smarter, data-informed decisions.
+        </p>
+      </div>
     </div>
-    <div class="intro-text">
-      <h1>Hello! I am Magdalena</h1>
-   <p class="subtitle">
-     CRM & Data Specialist <br> Solving problems through simplicity
-   </p>
-  <p class="about">
-    With a Master’s in Social Psychology and experience bridging business and technical teams, I am a CRM and Data Specialist skilled in Salesforce 
-    and process improvement. I turn complex data and business needs into clear, actionable solutions that drive smarter, data-informed decisions.
-  </p>
 
-  <div class="projects">
-    <a href="projects/hubspot.html">
-      <div class="card">
-        <img src="assets/Screenshot 2025-09-22 150315.png" alt="HubSpot Jobsearch pipeline">
-        <h2>HubSpot Jobsearch Pipeline</h2>
-      </div>
-    </a>
+    <div class="projects">
+      <a href="projects/hubspot.html">
+        <div class="card">
+          <img src="assets/Screenshot 2025-09-22 150315.png" alt="HubSpot Jobsearch pipeline">
+          <h2>HubSpot Jobsearch Pipeline</h2>
+        </div>
+      </a>
 
-    <a href="projects/other.html">
-      <div class="card">
-        <img src="assets/clock.png" alt="Other Project">
-        <h2>Other Projects-Coming Soon</h2>
-      </div>
-    </a>
-  <!-- Add more project cards here -->
+      <a href="projects/other.html">
+        <div class="card">
+          <img src="assets/clock.png" alt="Other Project">
+          <h2>Other Projects - Coming Soon</h2>
+        </div>
+      </a>
+      <!-- Add more project cards here -->
+    </div>
+
   </div>
 </body>
 </html>
+
 
