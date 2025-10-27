@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>HubSpot Workflow Project</title>
+   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Playfair Display', serif;
       margin: 0;
       padding: 0;
       background: #f5f5f5;
@@ -59,12 +60,12 @@
 <body>
   <div class="container">
     <h1>HubSpot Job Search Pipeline</h1>
-    <p>This project demonstrates how I built a job search tracking solution in HubSpot using deals and workflow automation. It helps me manage applications, follow-ups, and outcomes.
-      The purpose was to make my job search easier to follow and analyze  to see where I applied, how companies responded, and which opportunities converted into offers. 
-      It also helps me stay focused, do better research on potential employers, and avoid losing track of ongoing applications.</p>
+    <p>This project demonstrates basic job search tracking solution in HubSpot using deals and workflows. It helps manage applications, follow-ups, and outcomes.
+      The purpose was to make job search easier to follow and analyze application statuses and companies responsivnes.
+      It also supports job seeker in staíng focused, do better research on potential employers, and avoid losing track of ongoing applications.</p>
 
     <h2>Pipeline</h2>
-    <p>Job search pipeline consists of 7 stages — Prospect, Applied, No Response, Application assesment process, Interviews, Hired, and Rejected.
+    <p>Job search pipeline consists of 7 stages — Prospect, Applied, No Response, Application assessment process, Interviews, Hired, and Rejected.
       It provides a clear overview of each step in the job search process, from initial outreach to final outcome including cases where companies assign tests or case studies as part of the recruitment process.
       It helps me stay organized, track progress, and easily see where each application stands.</p>
 
@@ -74,8 +75,8 @@
 
    <h2>Workflows</h2>
   <p>There are 2 workflows created to automate the job application process.
-      The first workflow moves deals from Applied to No Response when there’s no reply within a set time.
-      The second workflow moves deals from No Response to Lost when there’s still no activity after another period.</p>
+      The first workflow moves deals from "Applied" to "No Response" when there’s no reply within a set time.
+      The second workflow moves deals from "No Response" to Lost when there’s still no activity after another period.</p>
     <p><strong>Objective:</strong> Automating the follow up process and reduce manual updates.</p>
     <p><strong>Purpose:</strong> Making job search more efficient and easier to follow up on active deals. This helps with focusing on active application and not lose track on relevant opportunities. 
     At the same time, lost opportunities are automatically marked and moved, keeping the pipeline clean and ensuring that reports always reflect the most accurate status of my job search.</p>
@@ -86,17 +87,15 @@
 
     <video controls src="../assets/Workflow-1-and-Testing.mp4" type="video/mp4"></video>
     
-    <p><strong>Workflow 2: Satge "No Response" to "Rejected" (Close Lost)</strong></p>
+    <p><strong>Workflow 2: Stage "No Response" to "Rejected" (Close Lost)</strong></p>
     <p><strong>Logic:</strong> Deals in the No Response stage with no activity for more than 14 days s will automatically moved to Rejected stage = Lost deal.</p>
 
     <video controls src="../assets/workflow-2-Close Lost.mp4" type="video/mp4"></video>
 
-    <h2>Insights:</h2>
-    <ul>
-      <li>Track application status efficiently</li>
-      <li>Analyze patterns of invitations, rejections, and offers</li>
-      <li>Maintain structured records for personal tracking and reporting</li>
-    </ul>
+    <h2>Conclusion:</h2>
+     <p>By implementing a simple structured pipeline and workflows in HubSpot, job search activities became more structured and easier to manage.
+This system allows to track applications, follow up at the right time, and keep a clear view of which opportunities are active or not.
+It also provides a reliable way to analyze responses and outcomes, supporting informed decisions throughout the process.</p>
   </div>
 </body>
 </html>
