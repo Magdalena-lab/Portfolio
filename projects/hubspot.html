@@ -74,13 +74,13 @@
   <div class="container">
     <h1>HubSpot Job Search Pipeline</h1>
     <p>This project demonstrates basic job search tracking solution in HubSpot using deals and workflows. It helps manage applications, follow-ups, and outcomes.
-      The purpose was to make job search easier to follow and analyze application statuses and companies responsivnes.
-      It also supports job seeker in staíng focused, do better research on potential employers, and avoid losing track of ongoing applications.</p>
+      The purpose was to make job search easier to follow and analyze application stages and companies responsiveness.
+      It also supports job seeker in staying focused, do better research on potential employers, and avoid losing track of ongoing applications.</p>
 
     <h2>Pipeline</h2>
     <p>Job search pipeline consists of 7 stages: Prospect, Applied, No Response, Application assessment process, Interviews, Hired, and Rejected.
       It provides a clear overview of each step in the job search process, from initial outreach to final outcome including cases where companies assign tests or case studies as part of the recruitment process.
-      It helps me stay organized, track progress, and easily see where each application stands.</p>
+      It helps to stay organized, track progress, and easily see where each application stands.</p>
 
    
    <img src="../assets/Pipeline.png" alt="Pipeline"></img>
@@ -89,14 +89,13 @@
    <h2>Workflows</h2>
   <p>There are 2 workflows created to automate the job application process.
       The first workflow moves deals from "Applied" to "No Response" when there’s no reply within a set time.
-      The second workflow moves deals from "No Response" to Lost when there’s still no activity after another period.</p>
+      The second workflow moves deals from "No Response" to Lost  opportunity when there’s still no activity after another period.</p>
     <p><strong>Objective:</strong> Automating the follow up process and reduce manual updates.</p>
     <p><strong>Purpose:</strong> Making job search more efficient and easier to follow up on active deals. This helps with focusing on active application and not lose track on relevant opportunities. 
     At the same time, lost opportunities are automatically marked and moved, keeping the pipeline clean and ensuring that reports always reflect the most accurate status of my job search.</p>
 
     <h3>Workflow 1: Stage "Applied" to "No Response" </h3>
     <p><strong>Logic:</strong> Deals in the Applied stage with "Application Deadline" older than 14 days or "Creation Date" older than 30 days will automatically moved to No Response.</p>
-
 
     <video controls src="../assets/Workflow-1-and-Testing.mp4" type="video/mp4"></video>
     
