@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HubSpot Workflow Project</title>
+   <link href='https://fonts.googleapis.com/css?family=Urbanist' rel='stylesheet'>
+  <style>
+    body {
+      font-family: 'Urbanist';
+      font-size:1.1rem;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1100px;
+      width: 95%;
+      background: white;
+      padding: 40px;
+      margin: 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: justify;
+    }
+    h1 {
+      color: #2F4F4F;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+     h2 {
+  color: #2F4F4F;
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  margin-top: 30px;  
+  margin-bottom: 15px;
+  text-align: center;
+}
+   h3 {
+  font-size: 1.3rem;
+  color: #000;
+  line-height: 1.6;
+  font-style: italic;
+  font-weight: bold; 
+  margin-bottom: 20px;
+  text-align: center;
+}
+   img {
+  width: 90%;
+  height: auto;
+  margin: 40px;
+}
+    video {
+      max-width: 80%;
+      margin: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    ul {
+      text-align: left;
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HubSpot Job Search Pipeline</h1>
+    <p>This project demonstrates basic job search tracking solution in HubSpot using deals and workflows. It helps manage applications, follow-ups, and outcomes.
+      The purpose was to make job search easier to follow and analyze application stages and companies responsiveness.
+      It also supports job seeker in staying focused, do better research on potential employers, and avoid losing track of ongoing applications.</p>
+
+    <h2>Pipeline</h2>
+    <p>Job search pipeline consists of 7 stages: Prospect, Applied, No Response, Application assessment process, Interviews, Hired, and Rejected.
+      It provides a clear overview of each step in the job search process, from initial outreach to final outcome including cases where companies assign tests or case studies as part of the recruitment process.
+      It helps to stay organized, track progress, and easily see where each application stands.</p>
+
+   
+   <img src="../assets/Pipeline.png" alt="Pipeline"></img>
+    
+
+   <h2>Workflows</h2>
+  <p>There are 2 workflows created to automate the job application process.
+      The first workflow moves deals from "Applied" to "No Response" when there’s no reply within a set time.
+      The second workflow moves deals from "No Response" to Lost  opportunity when there’s still no activity after another period.</p>
+    <p><strong>Objective:</strong> Automating the follow up process and reduce manual updates.</p>
+    <p><strong>Purpose:</strong> Making job search more efficient and easier to follow up on active deals. This helps with focusing on active application and not lose track on relevant opportunities. 
+    At the same time, lost opportunities are automatically marked and moved, keeping the pipeline clean and ensuring that reports always reflect the most accurate status of my job search.</p>
+
+    <h3>Workflow 1: Stage "Applied" to "No Response" </h3>
+    <p><strong>Logic:</strong> Deals in the Applied stage with "Application Deadline" older than 14 days or "Creation Date" older than 30 days will automatically moved to No Response.</p>
+
+    <video controls src="../assets/Workflow-1-Testing.mp4" type="video/mp4"></video>
+    
+    <h3>Workflow 2: Stage "No Response" to "Rejected" (Close Lost)</h3>
+    <p><strong>Logic:</strong> Deals in the No Response stage with no activity for more than 14 days s will automatically moved to Rejected stage = Lost deal.</p>
+
+    <video controls src="../assets/workflow-2-Close Lost.mp4" type="video/mp4"></video>
+
+    <h2>Conclusion:</h2>
+     <p>By implementing a simple structured pipeline and workflows in HubSpot, job search activities became more structured and easier to manage.
+This system allows to track applications, follow up at the right time, and keep a clear view of which opportunities are active or not.
+It also provides a reliable way to analyze responses and outcomes, supporting informed decisions throughout the process.</p>
+  </div>
+</body>
+</html>
