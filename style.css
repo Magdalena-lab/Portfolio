@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Urbanist');
 
+:root {
+  --base-font: 16px; /* Desktop base */
+}
 
 * {
   margin: 0;
@@ -11,6 +14,7 @@
 body {
   background: #f8f9fa;
   color: #333;
+  font-size: var(--base-font);
 }
 
 a {
@@ -33,14 +37,14 @@ header {
 }
 
 .logo {
-  font-size: 25px;
+  font-size: calc(var(--base-font) * 1.5625);
   font-weight: bold;
 }
 
 
 nav a {
-  margin-left: 25px;
-  font-size: 20px;
+  margin-left: calc(var(--base-font) * 1.5625); /* 25px */
+  font-size: calc(var(--base-font) * 1.25);     /* 20px */
   opacity: .7;
   position: relative;
   padding-bottom: 4px;
@@ -82,8 +86,8 @@ section {
 
 
 h2 {
-  font-size: 50px;
-  margin-bottom: 70px;
+  font-size: calc(var(--base-font) * 3.125);    /* 50px */
+  margin-bottom: calc(var(--base-font) * 4.375); /* 70px */
 }
 
 .home {
@@ -103,15 +107,15 @@ h2 {
 }
 
 .home-content h1 {
-  font-size: 60px;
-  margin-bottom: 10px;
+  font-size: calc(var(--base-font) * 3.75);    
+  margin-bottom: calc(var(--base-font) * 0.625);
   text-align: left;
 }
 
 .home-content p {
-  margin-bottom: 30px;
-  max-width: 800px;
-  font-size: 30px;
+  font-size: calc(var(--base-font) * 1.875);   /* 30px */
+  margin-bottom: calc(var(--base-font) * 1.875); /* 30px */
+  max-width: 50rem; 
   text-align: left;
 }
 
@@ -135,28 +139,28 @@ h2 {
 
 .project-card {
   background: #1c0266;
-  width: 300px;
-  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  font-size: 20px;
-  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: .2s;
+  font-size: calc(var(--base-font) * 1.25);    /* 20px */
+  width: calc(var(--base-font) * 18.75);       /* 300px */
+  height: calc(var(--base-font) * 25);         /* 400px */
+  border-radius: calc(var(--base-font) * 0.625);
 }
 
 .project-card:hover {
   transform: translateY(-5px);
 }
 
-.Skills{
-  padding: 60px 50px;
+.Skills, .Experience, .Contact {
+  font-size: calc(var(--base-font) * 1.875);   /* 30px */
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 30px;
+  padding: calc(var(--base-font) * 3.75) calc(var(--base-font) * 3.125);
 }
 
 ul {
@@ -186,9 +190,9 @@ ul li::before {
 }
 
 .IT-skills h3 {
-  margin-bottom: 40px;
+  font-size: calc(var(--base-font) * 2.5);     /* 40px */
+  margin-bottom: calc(var(--base-font) * 2.5); /* 40px */
   text-align: center;
-  font-size: 40px;
   color: #333;
 }
 
@@ -196,31 +200,31 @@ ul li::before {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px; 
+  gap: calc(var(--base-font) * 0.5);
 }
+
 
 .tool-card {
   background-color: #1c0266;
-  padding: 15px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;       
+  overflow: hidden;          
+  text-overflow: ellipsis;   
+  font-size: calc(var(--base-font) * 1.5);
+  padding: calc(var(--base-font) * 0.5) calc(var(--base-font) * 1);
+  border-radius: calc(var(--base-font) * 0.5);
+  box-shadow: 0 calc(var(--base-font) * 0.25) calc(var(--base-font) * 0.5) rgba(0, 0, 0, 0.1);
   text-align: center;
-  min-width: 100px; 
-  font-weight: 500;
-  transition: transform 0.2s, box-shadow 0.2s;
+  min-width: calc(var(--base-font) * 6.25);
+  max-width: 190px;   
+  flex: 1 1 auto;
+  overflow: hidden;           /* hide overflow */
+  text-overflow: ellipsis;
+
 }
 
 .tool-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.Experience{
-  padding: 60px 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 30px;
 }
 
 .timeline {
@@ -262,17 +266,16 @@ ul li::before {
 }
 
 .date {
+  font-size: calc(var(--base-font) * 1.5625);  /* 25px */
   font-weight: bold;
-  font-size: 25px;
-  margin-bottom: 10px;
+  margin-bottom: calc(var(--base-font) * 0.625); /* 10px */
 }
 
 .desc {
-  font-size: 25px;
-  margin-top: 10px;
-  width: 180px;
+  font-size: calc(var(--base-font) * 1.25);    /* 20px */
+  margin-top: calc(var(--base-font) * 0.625);  /* 10px */
+  width: calc(var(--base-font) * 11.25);       /* 180px */
   word-wrap: break-word;
-  font-size: 20px;
 }
 
 /*TOP ITEMS*/
@@ -323,14 +326,6 @@ ul li::before {
   top: 30px;
 }
 
-.Contact{
-  padding: 60px 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 30px;
-}
-
 .contact-links {
   display: flex;
   justify-content: center;
@@ -339,7 +334,7 @@ ul li::before {
 }
 
 .contact-icon {
-  font-size: 20px;
+  font-size: calc(var(--base-font) * 1.25); 
   display: flex;
   align-items: center;
   gap: 8px;
@@ -360,6 +355,9 @@ ul li::before {
 
 /* TABLET */
 @media (max-width: 900px) {
+
+  :root { --base-font: 14px; }
+
   header {
     padding: 15px 25px;
     flex-wrap: wrap;
@@ -381,13 +379,8 @@ ul li::before {
   }
 
   ul li {
-    font-size: 18px; 
     padding-left: 40px; 
     margin-bottom: 20px;
-  }
-
-  ul li::before {
-    font-size: 16px; 
   }
 
   .item {
@@ -410,6 +403,9 @@ ul li::before {
 
 /* MOBILE */
 @media (max-width: 600px) {
+
+  :root { --base-font: 12px; }
+
   header {
     flex-direction: column;
     align-items: flex-start;
@@ -419,7 +415,6 @@ ul li::before {
   nav a {
     margin-left: 0;
     margin-right: 15px;
-    font-size: 14px;
   }
 
   .home {
@@ -431,14 +426,6 @@ ul li::before {
   .home-img img {
     width: 160px;
     height: 160px;
-  }
-
-  .home-content h1 {
-    font-size: 24px;
-  }
-
-  .home-content p {
-    font-size: 16px;
   }
 
   .project-card {
@@ -453,10 +440,6 @@ ul li::before {
   .item .desc {
     font-size: 12px; 
     width: 100px; 
-  }
-
-  h2 {
-    font-size: 24px; 
   }
 
 
@@ -476,12 +459,8 @@ ul {
   }
 
   ul li {
-    font-size: 14px;
     padding-left: 35px;
     margin-bottom: 15px;
   }
 
-  ul li::before {
-    font-size: 14px;
-  }
 }
