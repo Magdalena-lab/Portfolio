@@ -447,11 +447,11 @@ ul li::before {
   }
 
 .item .date {
-    font-size: 14px; 
+    font-size: 12px; 
   }
 
   .item .desc {
-    font-size: 12px; 
+    font-size: 10px; 
     width: 100px; 
   }
 
