@@ -374,7 +374,39 @@ ul li::before {
     width: 220px;
     height: 220px;
   }
+
+  ul {
+    padding-left: 50px; 
+    width: 100%;
+  }
+
+  ul li {
+    font-size: 18px; 
+    padding-left: 40px; 
+    margin-bottom: 20px;
+  }
+
+  ul li::before {
+    font-size: 16px; 
+  }
+
+  .item {
+    width: 200px; 
+    margin: 20px;  
+  }
+
+  .item.top .date,
+  .item.bottom .date,
+  .item.top .desc,
+  .item.bottom .desc {
+    font-size: 18px; 
+  }
+
+  .desc {
+    width: 150px; 
+  }
 }
+
 
 /* MOBILE */
 @media (max-width: 600px) {
@@ -412,5 +444,44 @@ ul li::before {
   .project-card {
     width: 90%;
     height: 140px;
+  }
+
+.item .date {
+    font-size: 14px; 
+  }
+
+  .item .desc {
+    font-size: 12px; 
+    width: 100px; 
+  }
+
+  h2 {
+    font-size: 24px; 
+  }
+
+
+  .dot {
+    width: 15px;
+    height: 15px;
+  }
+
+  .item {
+    width: auto;
+    margin: 20px; 
+  }
+
+ul {
+    padding-left: 20px; 
+    width: 100%;
+  }
+
+  ul li {
+    font-size: 14px;
+    padding-left: 35px;
+    margin-bottom: 15px;
+  }
+
+  ul li::before {
+    font-size: 14px;
   }
 }
