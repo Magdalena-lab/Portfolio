@@ -244,7 +244,7 @@
 
     <img src="../assets/Terminal Output_1.png" alt="Terminal output showing pipeline running" />
 
-    <h2>Extract — RAWG API</h2>
+    <h2>Extract: RAWG API</h2>
     <p>
       Each API call fetches a page of game results filtered by date range and platform.
       The pipeline paginates automatically, moving to the next page until the target count is reached
@@ -257,7 +257,7 @@
       and every successful call prints a confirmation to the console.
     </p>
 
-    <h2>Transform — Flattening Nested Data</h2>
+    <h2>Transform: Flattening Nested Data</h2>
     <p>
       API responses return deeply nested JSON — each game object contains arrays of genres, platforms,
       ratings, and ESRB data. <code>pd.json_normalize()</code> is used to flatten these structures into DataFrames.
@@ -332,7 +332,7 @@
       </tbody>
     </table>
 
-    <h2>Load — PostgreSQL & JSON</h2>
+    <h2>Load: PostgreSQL & JSON</h2>
     <p>
       Each record is inserted using <code>ON CONFLICT DO NOTHING</code>, making every run idempotent —
       safe to re-execute without creating duplicates, even if the pipeline is interrupted and restarted mid-run.
@@ -349,13 +349,17 @@
 
     <h2>Conclusion</h2>
     <p>
-      This project demonstrates a complete, production-aware ETL pipeline built from scratch.
-      It covers the full data engineering workflow: authenticating with an external API,
-      handling paginated and nested JSON responses, normalising data into a relational model,
-      managing many-to-many relationships via bridge tables, and loading everything into PostgreSQL
-      with conflict-safe inserts.
-      The JSON snapshots add an additional layer of data availability for analysis without requiring a live database connection.
+      This project shows an entire ETL process created from scratch.
+      It follows the whole data engineering process: authenticating to an external API,
+      dealing with paginated and nested JSON data, normalizing data to a relational format, dealing with many-to-many relationships via bridge tables,
+      and loading data into PostgreSQL with conflict-free inserts.
+      The JSON snapshots are an additional layer of data availability for analysis without needing a database connection.
     </p>
+    <h2>Data source</h2>  
+    <p> RAWG Video Games Database API
+    <a href="https://rawg.io/apidocs" target="_blank" style="color: #1c0266; font-weight: 600;"></a> 
+     — a free community-built video game database covering 500,000+ games.
+</p>
 
   </div>
 </body>
