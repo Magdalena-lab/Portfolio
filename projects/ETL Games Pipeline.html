@@ -238,8 +238,7 @@
       The pipeline collects games released between <strong>2022 and 2024</strong> across 7 parent platforms:
       PC, PlayStation, Xbox, iOS, Android, Nintendo, and Web.
       For each platform, up to 400 games are retrieved in pages of 40, ordered by ratings count.
-      Data is extracted, flattened from nested API responses, and inserted into PostgreSQL across three layers:
-      core entities, lookup tables, and many-to-many bridge tables.
+      Data is extracted, flattened from nested API responses, and inserted into PostgreSQL.
     </p>
 
     <img src="../assets/Terminal Output_1.png" alt="Terminal output showing pipeline running" />
@@ -253,14 +252,13 @@
     <p>
       To respect rate limits, the pipeline pauses <strong>3 seconds between every call</strong>
       and sleeps for <strong>10 minutes after every 50 calls</strong>.
-      Failed requests are caught and logged without crashing the pipeline,
-      and every successful call prints a confirmation to the console.
+      Every successful call prints a confirmation to the console.
     </p>
 
     <h2>Transform: Flattening Nested Data</h2>
     <p>
-      API responses return deeply nested JSON — each game object contains arrays of genres, platforms,
-      ratings, and ESRB data. <code>pd.json_normalize()</code> is used to flatten these structures into DataFrames.
+      API responses return deeply nested JSON. Each game object contains arrays of genres, platforms,
+      ratings, and ESRB data. <code>pd.json_normalize()</code> is used to flatten data into DataFrames.
       Columns are renamed to match the database schema, missing fields are filled with <code>None</code>,
       and duplicates are removed before inserting.
     </p>
@@ -339,18 +337,17 @@
       After all inserts, the connection is committed and closed cleanly.
     </p>
     <p>
-      In parallel, all collected records are saved as local JSON snapshots:
+      All collected records are saved as local JSON snapshots:
       <code>games_raw.json</code>, <code>genres_raw.json</code>, <code>platforms_raw.json</code>,
       <code>bridge_games_genres.json</code>, and <code>bridge_platforms_games.json</code>.
-      These allow offline analysis and act as a backup independent of the database.
+      These allow offline analysis and act as a backup of the database.
     </p>
 
     <img src="../assets/PgAdmin-query.png" alt="pgAdmin showing query results from the games table" />
 
     <h2>Conclusion</h2>
     <p>
-      This project shows an entire ETL process created from scratch.
-      It follows the whole data engineering process: authenticating to an external API,
+      This project shows an entire ETL process. It follows the whole data engineering process: authenticating to an external API,
       dealing with paginated and nested JSON data, normalizing data to a relational format, dealing with many-to-many relationships via bridge tables,
       and loading data into PostgreSQL with conflict-free inserts.
       The JSON snapshots are an additional layer of data availability for analysis without needing a database connection.
