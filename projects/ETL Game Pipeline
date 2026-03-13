@@ -242,8 +242,7 @@
       core entities, lookup tables, and many-to-many bridge tables.
     </p>
 
-    <!--PHOTO 1: Terminal screenshot showing the pipeline running — API calls, rate limit pauses, platform progress -->
-    <img src="../assets/terminal-output.png" alt="Terminal output showing pipeline running" />
+    <img src="../assets/Terminal Output_1.png" alt="Terminal output showing pipeline running" />
 
     <h2>Extract — RAWG API</h2>
     <p>
@@ -276,8 +275,7 @@
       The many-to-many relationships between games, genres, and platforms are managed through two dedicated bridge tables.
     </p>
 
-    <!-- ✏️ PHOTO 2: ERD diagram from pgAdmin (right-click schema → ERD for database) -->
-    <img src="../assets/erd-diagram.png" alt="Entity Relationship Diagram showing all 5 tables" />
+    <img src="../assets/PgAdmin-query.png" alt="Entity Relationship Diagram showing all 5 tables" />
 
     <h3>raw.games</h3>
     <table class="schema-table">
@@ -347,8 +345,7 @@
       These allow offline analysis and act as a backup independent of the database.
     </p>
 
-    <!-- ✏️ PHOTO 3: pgAdmin query result — e.g. SELECT * FROM raw.games LIMIT 10 -->
-    <img src="../assets/pgadmin-query.png" alt="pgAdmin showing query results from the games table" />
+    <img src="../assets/ERD schema games_genres_platforms.png" alt="pgAdmin showing query results from the games table" />
 
     <h2>Conclusion</h2>
     <p>
