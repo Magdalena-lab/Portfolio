@@ -1,1 +1,362 @@
 <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ETL Games Project</title>
+  <link href='https://fonts.googleapis.com/css?family=Urbanist' rel='stylesheet'>
+
+  <style>
+    body {
+      font-family: 'Urbanist';
+      font-size: 1.5em;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1300px;
+      width: 95%;
+      background: white;
+      padding: 40px;
+      margin: 100px auto 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: justify;
+    }
+
+    h1 {
+      color: #1c0266;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #1c0266;
+      font-size: 1.7em;
+      font-weight: 600;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 1.2em;
+      color: #000;
+      line-height: 1.6;
+      font-style: italic;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    img {
+      width: 90%;
+      height: auto;
+      display: block;
+      margin: 40px auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+      margin-top: 15px;
+    }
+
+    ul {
+      text-align: justify;
+      margin-left: 20px;
+      line-height: 1.8;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    code {
+      background: #f0eeff;
+      color: #1c0266;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-family: monospace;
+    }
+
+    .schema-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 30px;
+      font-size: 0.85em;
+    }
+
+    .schema-table th {
+      background: #1c0266;
+      color: white;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .schema-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #ece9f7;
+    }
+
+    .schema-table tr:nth-child(even) td {
+      background: #f7f5ff;
+    }
+
+    .schema-table tr:hover td {
+      background: #ede9fc;
+    }
+
+    .pk   { color: #1c0266; font-weight: bold; }
+    .fk   { color: #7c3aed; font-style: italic; }
+    .type { color: #555; font-family: monospace; font-size: 0.9em; }
+
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0 30px;
+    }
+
+    .pill {
+      background: #f0eeff;
+      color: #1c0266;
+      border: 1px solid #c9bfff;
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 0.75em;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Urbanist";
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin-left: 25px;
+      font-size: 20px;
+      opacity: .7;
+      position: relative;
+      padding-bottom: 4px;
+      transition: opacity .2s;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: #1c0266;
+      transition: width .25s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      opacity: 1;
+      font-weight: bold;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="../index.html" class="logo">Magdalena</a>
+    <nav>
+      <a href="../index.html">Home</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <h1>ETL Games Pipeline</h1>
+    <p>
+      This project is a Python ETL pipeline that extracts video game data from the <strong>RAWG API</strong>,
+      transforms and normalises it into relational tables, loads it into <strong>PostgreSQL</strong>,
+      and saves JSON snapshots for offline analysis.
+      The goal was to build a complete, automated data pipeline from a live API to a structured database —
+      handling real-world challenges like nested JSON, many-to-many relationships, API rate limiting, and duplicate prevention.
+    </p>
+
+    <div class="tech-pills">
+      <span class="pill">Python</span>
+      <span class="pill">PostgreSQL</span>
+      <span class="pill">RAWG API</span>
+      <span class="pill">Pandas</span>
+      <span class="pill">SQLAlchemy</span>
+      <span class="pill">psycopg2</span>
+      <span class="pill">JSON</span>
+      <span class="pill">dotenv</span>
+    </div>
+
+    <h2>Pipeline Overview</h2>
+    <p>
+      The pipeline collects games released between <strong>2022 and 2024</strong> across 7 parent platforms:
+      PC, PlayStation, Xbox, iOS, Android, Nintendo, and Web.
+      For each platform, up to 400 games are retrieved in pages of 40, ordered by ratings count.
+      Data is extracted, flattened from nested API responses, and inserted into PostgreSQL across three layers:
+      core entities, lookup tables, and many-to-many bridge tables.
+    </p>
+
+    <img src="../assets/Terminal Output_1.png" alt="Terminal output showing pipeline running" />
+
+    <h2>Extract — RAWG API</h2>
+    <p>
+      Each API call fetches a page of game results filtered by date range and platform.
+      The pipeline paginates automatically, moving to the next page until the target count is reached
+      or no further results are returned.
+    </p>
+    <p>
+      To respect rate limits, the pipeline pauses <strong>3 seconds between every call</strong>
+      and sleeps for <strong>10 minutes after every 50 calls</strong>.
+      Failed requests are caught and logged without crashing the pipeline,
+      and every successful call prints a confirmation to the console.
+    </p>
+
+    <h2>Transform — Flattening Nested Data</h2>
+    <p>
+      API responses return deeply nested JSON — each game object contains arrays of genres, platforms,
+      ratings, and ESRB data. <code>pd.json_normalize()</code> is used to flatten these structures into DataFrames.
+      Columns are renamed to match the database schema, missing fields are filled with <code>None</code>,
+      and duplicates are removed before inserting.
+    </p>
+    <p>
+      Bridge tables are built by merging the flattened genre and platform records with database-assigned IDs
+      retrieved via <code>pd.read_sql()</code>, ensuring referential integrity across all tables.
+    </p>
+
+    <h2>Database Schema</h2>
+    <p>
+      Data is stored in a <code>raw</code> schema in PostgreSQL across 5 tables.
+      The many-to-many relationships between games, genres, and platforms are managed through two dedicated bridge tables.
+    </p>
+
+    <img src="../assets/PgAdmin-query.png" alt="Entity Relationship Diagram showing all 5 tables" />
+
+    <h3>raw.games</h3>
+    <table class="schema-table">
+      <thead><tr><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="pk">game_id</td><td class="type">SERIAL</td><td>Primary key, auto-generated</td></tr>
+        <tr><td>rawg_game_id</td><td class="type">INT UNIQUE</td><td>Original ID from RAWG API</td></tr>
+        <tr><td>game_name</td><td class="type">TEXT</td><td>Title of the game</td></tr>
+        <tr><td>release_date</td><td class="type">DATE</td><td>Official release date</td></tr>
+        <tr><td>age_rating</td><td class="type">TEXT</td><td>ESRB rating (e.g. Mature, Teen)</td></tr>
+        <tr><td>ratings_count</td><td class="type">INT</td><td>Number of user ratings on RAWG</td></tr>
+        <tr><td>rating</td><td class="type">REAL</td><td>Average user rating</td></tr>
+        <tr><td>created_at</td><td class="type">TIMESTAMP</td><td>Row insertion timestamp</td></tr>
+      </tbody>
+    </table>
+
+    <h3>raw.genres</h3>
+    <table class="schema-table">
+      <thead><tr><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="pk">genre_id</td><td class="type">SERIAL</td><td>Primary key, auto-generated</td></tr>
+        <tr><td>rawg_genre_id</td><td class="type">INT UNIQUE</td><td>Original ID from RAWG API</td></tr>
+        <tr><td>genre_name</td><td class="type">TEXT</td><td>e.g. Action, RPG, Strategy</td></tr>
+        <tr><td>created_at</td><td class="type">TIMESTAMP</td><td>Row insertion timestamp</td></tr>
+      </tbody>
+    </table>
+
+    <h3>raw.platforms</h3>
+    <table class="schema-table">
+      <thead><tr><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="pk">platform_id</td><td class="type">SERIAL</td><td>Primary key, auto-generated</td></tr>
+        <tr><td>rawg_platform_id</td><td class="type">INT UNIQUE</td><td>Original ID from RAWG API</td></tr>
+        <tr><td>platform_name</td><td class="type">TEXT</td><td>e.g. PC, PlayStation 5, iOS</td></tr>
+        <tr><td>created_at</td><td class="type">TIMESTAMP</td><td>Row insertion timestamp</td></tr>
+      </tbody>
+    </table>
+
+    <h3>raw.bridge_games_genres</h3>
+    <table class="schema-table">
+      <thead><tr><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="fk">game_id</td><td class="type">INT</td><td>Foreign key → raw.games</td></tr>
+        <tr><td class="fk">genre_id</td><td class="type">INT</td><td>Foreign key → raw.genres</td></tr>
+      </tbody>
+    </table>
+
+    <h3>raw.bridge_platforms_games</h3>
+    <table class="schema-table">
+      <thead><tr><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="fk">game_id</td><td class="type">INT</td><td>Foreign key → raw.games</td></tr>
+        <tr><td class="fk">platform_id</td><td class="type">INT</td><td>Foreign key → raw.platforms</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Load — PostgreSQL & JSON</h2>
+    <p>
+      Each record is inserted using <code>ON CONFLICT DO NOTHING</code>, making every run idempotent —
+      safe to re-execute without creating duplicates, even if the pipeline is interrupted and restarted mid-run.
+      After all inserts, the connection is committed and closed cleanly.
+    </p>
+    <p>
+      In parallel, all collected records are saved as local JSON snapshots:
+      <code>games_raw.json</code>, <code>genres_raw.json</code>, <code>platforms_raw.json</code>,
+      <code>bridge_games_genres.json</code>, and <code>bridge_platforms_games.json</code>.
+      These allow offline analysis and act as a backup independent of the database.
+    </p>
+
+    <img src="../assets/ERD schema games_genres_platforms.png" alt="pgAdmin showing query results from the games table" />
+
+    <h2>Conclusion</h2>
+    <p>
+      This project demonstrates a complete, production-aware ETL pipeline built from scratch.
+      It covers the full data engineering workflow: authenticating with an external API,
+      handling paginated and nested JSON responses, normalising data into a relational model,
+      managing many-to-many relationships via bridge tables, and loading everything into PostgreSQL
+      with conflict-safe inserts.
+      The JSON snapshots add an additional layer of data availability for analysis without requiring a live database connection.
+    </p>
+
+  </div>
+</body>
+</html>
