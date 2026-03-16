@@ -267,7 +267,7 @@
     </p>
     <p>
       Bridge tables are built by merging the flattened genre and platform records with database-assigned IDs
-      retrieved via <code>pd.read_sql()</code>, ensuring referential integrity across all tables.
+      retrieved with <code>pd.read_sql()</code>, ensuring referential integrity across all tables.
     </p>
 
     <h2>Database Schema</h2>
@@ -319,8 +319,8 @@
     <table class="schema-table">
       <thead><tr><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td class="fk">game_id</td><td class="type">INT</td><td>Foreign key → raw.games</td></tr>
-        <tr><td class="fk">genre_id</td><td class="type">INT</td><td>Foreign key → raw.genres</td></tr>
+        <tr><td class="fk">game_id</td><td class="type">INT</td><td>Foreign key - raw.games</td></tr>
+        <tr><td class="fk">genre_id</td><td class="type">INT</td><td>Foreign key - raw.genres</td></tr>
       </tbody>
     </table>
 
@@ -328,14 +328,14 @@
     <table class="schema-table">
       <thead><tr><th>Column</th><th>Type</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td class="fk">game_id</td><td class="type">INT</td><td>Foreign key → raw.games</td></tr>
-        <tr><td class="fk">platform_id</td><td class="type">INT</td><td>Foreign key → raw.platforms</td></tr>
+        <tr><td class="fk">game_id</td><td class="type">INT</td><td>Foreign key - raw.games</td></tr>
+        <tr><td class="fk">platform_id</td><td class="type">INT</td><td>Foreign key - raw.platforms</td></tr>
       </tbody>
     </table>
 
     <h2>Load: PostgreSQL & JSON</h2>
     <p>
-      Each record is inserted using <code>ON CONFLICT DO NOTHING</code>, making every run idempotent —
+      Each record is inserted using <code>ON CONFLICT DO NOTHING</code>, making every run idempotent and
       safe to re-run without creating duplicates.
       After all inserts, the connection is committed and closed.
     </p>
