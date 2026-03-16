@@ -219,9 +219,9 @@
     <p>
       This project is a Python ETL pipeline that extracts video game data from the <strong>RAWG API</strong>,
       transforms and normalises it into relational tables, loads it into <strong>PostgreSQL</strong>,
-      and saves JSON snapshots for offline analysis.
-      The goal was to build a complete, automated data pipeline from a live API to a structured database —
-      handling real-world challenges like nested JSON, many-to-many relationships, API rate limiting, and duplicate prevention.
+      and saves JSON snapshots for backup, to use data for analysis without making new API calls.
+      My goal was to build a data pipeline from a live API and load it to structured database. 
+      Handle real-world challenges like nested JSON, many-to-many relationships, API rate limiting, and duplicate prevention.
     </p>
 
     <div class="tech-pills">
@@ -240,7 +240,8 @@
       The pipeline collects games released between <strong>2022 and 2024</strong> across 7 parent platforms:
       PC, PlayStation, Xbox, iOS, Android, Nintendo, and Web.
       For each platform, up to 400 games are retrieved in pages of 40, ordered by ratings count.
-      Data is extracted, flattened from nested API responses, and inserted into PostgreSQL.
+      Data is extracted, flattened from nested API responses, and inserted into PostgreSQL 
+      and saved to Json files for backup for later analysis to prevent addtional API calls and handle limitations.
     </p>
 
     <img src="../assets/Terminal Output_1.png" alt="Terminal output showing pipeline running" />
@@ -248,8 +249,8 @@
     <h2>Extract: RAWG API</h2>
     <p>
       Each API call fetches a page of game results filtered by date range and platform.
-      The pipeline paginates automatically, moving to the next page until the target count is reached
-      or no further results are returned.
+      The pipeline is automatically moving to the next page until the target count is reached
+      or no more results are returned.
     </p>
     <p>
       To respect rate limits, the pipeline pauses <strong>3 seconds between every call</strong>
@@ -272,7 +273,7 @@
     <h2>Database Schema</h2>
     <p>
       Data is stored in a <code>raw</code> schema in PostgreSQL across 5 tables.
-      The many-to-many relationships between games, genres, and platforms are managed through two dedicated bridge tables.
+      The many-to-many relationships between games, genres, and platforms are managed through two bridge tables.
     </p>
 
     <img src="../assets/ERD schema games_genres_platforms.png" alt="Entity Relationship Diagram showing all 5 tables" />
@@ -335,24 +336,23 @@
     <h2>Load: PostgreSQL & JSON</h2>
     <p>
       Each record is inserted using <code>ON CONFLICT DO NOTHING</code>, making every run idempotent —
-      safe to re-execute without creating duplicates, even if the pipeline is interrupted and restarted mid-run.
-      After all inserts, the connection is committed and closed cleanly.
+      safe to re-run without creating duplicates.
+      After all inserts, the connection is committed and closed.
     </p>
     <p>
       All collected records are saved as local JSON snapshots:
       <code>games_raw.json</code>, <code>genres_raw.json</code>, <code>platforms_raw.json</code>,
       <code>bridge_games_genres.json</code>, and <code>bridge_platforms_games.json</code>.
-      These allow offline analysis and act as a backup of the database.
+      These act as a backup of the database and allows analysis in without making new API calls.
     </p>
 
     <img src="../assets/PgAdmin-query.png" alt="pgAdmin showing query results from the games table" />
 
     <h2>Conclusion</h2>
     <p>
-      This project shows an entire ETL process. It follows the whole data engineering process: authenticating to an external API,
-      dealing with paginated and nested JSON data, normalizing data to a relational format, dealing with many-to-many relationships via bridge tables,
-      and loading data into PostgreSQL with conflict-free inserts.
-      The JSON snapshots are an additional layer of data availability for analysis without needing a database connection.
+      This project follows data engineering process: authenticating to an external API,
+      dealing with paginated and nested JSON data, normalizing data to a relational format, dealing with many-to-many relationships with bridge tables,
+      and loading data into PostgreSQL. The JSON snapshots create additional layer of data availability for analysis without needing a database connection or new API calls.
     </p>
     <h2>Data source:</h2>  
     <p style="text-align: center; font-size: 1.0em; color: #888; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
