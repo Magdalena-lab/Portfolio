@@ -7,10 +7,6 @@
 <link href="https://fonts.googleapis.com/css?family=Urbanist" rel="stylesheet">
 <style>
 
-/* ════════════════════════════════════════
-   BASE — matches your existing style.css
-════════════════════════════════════════ */
-
 :root {
   --base-font: 16px; /* Desktop base */
 }
@@ -33,9 +29,6 @@ a {
   color: inherit;
 }
 
-/* ════════════════════════════════════════
-   HEADER — exact copy of your header
-════════════════════════════════════════ */
 
 header {
   width: 100%;
@@ -86,17 +79,9 @@ nav a.active::after {
   width: 100%;
 }
 
-/* ════════════════════════════════════════
-   MAIN
-════════════════════════════════════════ */
-
 main {
   padding-top: 120px;
 }
-
-/* ════════════════════════════════════════
-   CONTACT SECTION
-════════════════════════════════════════ */
 
 .Contact {
   display: flex;
@@ -144,83 +129,6 @@ main {
   margin-bottom: 16px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
-}
-
-.form-group label {
-  font-size: 13px;
-  font-weight: 700;
-  color: #1c0266;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 7px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  font-family: "Urbanist";
-  font-size: 15px;
-  color: #333;
-  background: #f4f3f9;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  padding: 13px 16px;
-  outline: none;
-  transition: border-color 0.2s, background 0.2s;
-  width: 100%;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-.form-group select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231c0266' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  background-color: #f4f3f9;
-  padding-right: 40px;
-  cursor: pointer;
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 130px;
-  line-height: 1.6;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #1c0266;
-  background: #fff;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: #aaa;
-}
-
-.form-group input.valid,
-.form-group select.valid,
-.form-group textarea.valid {
-  border-color: #22c55e;
-  background: #f0fdf4;
-}
-
-.form-group input.invalid,
-.form-group select.invalid,
-.form-group textarea.invalid {
-  border-color: #ef4444;
-  background: #fef2f2;
-}
-
-/* ════════════════════════════════════════
-   SUBMIT BUTTON — matches your .contact-icon
-════════════════════════════════════════ */
-
 .submit-btn {
   font-family: "Urbanist";
   font-size: calc(var(--base-font) * 1.125);
@@ -260,9 +168,6 @@ main {
   transform: translateX(4px);
 }
 
-/* ════════════════════════════════════════
-   ERROR + SUCCESS STATES
-════════════════════════════════════════ */
 
 .error-msg {
   display: none;
@@ -313,9 +218,6 @@ main {
   color: #666;
 }
 
-/* ════════════════════════════════════════
-   LOADING SPINNER
-════════════════════════════════════════ */
 
 .spinner {
   display: none;
@@ -331,9 +233,6 @@ main {
   to { transform: rotate(360deg); }
 }
 
-/* ════════════════════════════════════════
-   CONTACT LINKS — your exact existing style
-════════════════════════════════════════ */
 
 .contact-links {
   display: flex;
@@ -362,9 +261,6 @@ main {
   color: white;
 }
 
-/* ════════════════════════════════════════
-   TABLET
-════════════════════════════════════════ */
 
 @media (max-width: 900px) {
   :root { --base-font: 14px; }
@@ -378,10 +274,6 @@ main {
     padding: 36px 32px;
   }
 }
-
-/* ════════════════════════════════════════
-   MOBILE
-════════════════════════════════════════ */
 
 @media (max-width: 600px) {
   :root { --base-font: 12px; }
@@ -416,25 +308,19 @@ main {
 </head>
 <body>
 
-<!-- ════════════════════════════════════════
-     HEADER — update links to match your nav
-════════════════════════════════════════ -->
 <header>
-  <div class="logo">Your Name</div>
+  <div class="logo">Magdalena</div>
   <nav>
     <a href="index.html">Home</a>
     <a href="index.html#Projects">Projects</a>
     <a href="index.html#Experience">Experience</a>
     <a href="index.html#Skills">How I work</a>
-    <a href="contact.html" class="active">Contact</a>
+    <a href="Contact.html" class="active">Contact</a>
   </nav>
 </header>
 
 <main>
 
-<!-- ════════════════════════════════════════
-     CONTACT SECTION
-════════════════════════════════════════ -->
 <section class="Contact" id="contact">
 
   <h2>Contact</h2>
@@ -470,19 +356,6 @@ main {
       </div>
 
       <div class="form-group">
-        <label for="interest">What can I help with?</label>
-        <select id="interest" name="interest" required>
-          <option value="" disabled selected>Select a topic</option>
-          <option value="automation">Automation &amp; Zapier Workflows</option>
-          <option value="ai_integration">AI Integration</option>
-          <option value="finance_ops">Finance Operations</option>
-          <option value="sales_ops">Sales Operations / CRM</option>
-          <option value="consulting">General Consulting</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <div class="form-group">
         <label for="message">Message</label>
         <textarea id="message" name="message"
           placeholder="Tell me about your project or challenge..." required></textarea>
@@ -496,7 +369,7 @@ main {
 
     </form>
 
-    <!-- SUCCESS STATE -->
+    <!-- SUCCESS -->
     <div class="success-msg" id="successMsg">
       <div class="success-icon">✓</div>
       <h3>Message sent!</h3>
@@ -505,23 +378,23 @@ main {
 
   </div>
 
-  <!-- SOCIAL LINKS — update hrefs with your real URLs -->
+  <!-- SOCIAL LINKS -->
   <div class="contact-links">
-    <a href="https://linkedin.com/in/YOUR-PROFILE" class="contact-icon" target="_blank">
+    <a href="https://www.linkedin.com/in/magdalenafigeland-olechnowicz/" class="contact-icon" target="_blank">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
         <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
         <circle cx="4" cy="4" r="2"/>
       </svg>
       LinkedIn
     </a>
-    <a href="mailto:YOUR@EMAIL.COM" class="contact-icon">
+    <a href="mailto:magdalenafigeland@gmail.com" class="contact-icon">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="4" width="20" height="16" rx="2"/>
         <path d="M2 7l10 7 10-7"/>
       </svg>
       Email
     </a>
-    <a href="https://github.com/YOUR-PROFILE" class="contact-icon" target="_blank">
+    <a href="https://github.com/Magdalena-lab" class="contact-icon" target="_blank">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
       </svg>
@@ -532,14 +405,10 @@ main {
 </section>
 </main>
 
-<!-- ════════════════════════════════════════
-     HUBSPOT SCRIPT
-     Replace YOUR_PORTAL_ID and YOUR_FORM_ID
-════════════════════════════════════════ -->
 <script>
 
-const HUBSPOT_PORTAL_ID = 'YOUR_PORTAL_ID';
-const HUBSPOT_FORM_ID   = 'YOUR_FORM_ID';
+const HUBSPOT_PORTAL_ID = '146860386';
+const HUBSPOT_FORM_ID   = 'e5ef3292-d675-469f-8527-971d144c4f24';
 
 const form       = document.getElementById('contactForm');
 const successMsg = document.getElementById('successMsg');
