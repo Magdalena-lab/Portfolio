@@ -463,11 +463,8 @@ ul {
     margin-bottom: 15px;
   }
 
-<<<<<<< HEAD
-}
-=======
+  }
   ul li::before {
     font-size: 14px;
   }
 }
->>>>>>> efa0c372edb6fa0a76a5e5fbb5b3a74857c5701d
