@@ -1,33 +1,30 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Magdalena's personal portfolio - Contact page">
-  <title>Contact page</title>
-  <link href="style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Magdalena</title>
+<link href="https://fonts.googleapis.com/css?family=Urbanist" rel="stylesheet">
 <style>
 
+/* ════════════════════════════════════════
+   BASE — matches your existing style.css
+════════════════════════════════════════ */
+
 :root {
-  --base-font: 16px;
-  --navy: #1c0266;
-  --navy-light: #2a0399;
-  --bg: #f8f9fa;
-  --text: #333;
+  --base-font: 16px; /* Desktop base */
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Urbanist", sans-serif;
+  font-family: "Urbanist";
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+  background: #f8f9fa;
+  color: #333;
   font-size: var(--base-font);
 }
 
@@ -35,6 +32,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* ════════════════════════════════════════
+   HEADER — exact copy of your header
+════════════════════════════════════════ */
 
 header {
   width: 100%;
@@ -54,10 +55,9 @@ header {
   font-weight: bold;
 }
 
-
 nav a {
-  margin-left: calc(var(--base-font) * 1.5625); /* 25px */
-  font-size: calc(var(--base-font) * 1.25);     /* 20px */
+  margin-left: calc(var(--base-font) * 1.5625);
+  font-size: calc(var(--base-font) * 1.25);
   opacity: .7;
   position: relative;
   padding-bottom: 4px;
@@ -86,14 +86,17 @@ nav a.active::after {
   width: 100%;
 }
 
-
-/* MAIN*/
+/* ════════════════════════════════════════
+   MAIN
+════════════════════════════════════════ */
 
 main {
   padding-top: 120px;
 }
 
-/* CONTACT */
+/* ════════════════════════════════════════
+   CONTACT SECTION
+════════════════════════════════════════ */
 
 .Contact {
   display: flex;
@@ -116,7 +119,9 @@ main {
   line-height: 1.6;
 }
 
-/* FORM */
+/* ════════════════════════════════════════
+   FORM CARD
+════════════════════════════════════════ */
 
 .contact-form-card {
   background: white;
@@ -128,7 +133,9 @@ main {
   margin-bottom: 40px;
 }
 
-/*FORM FIELD */
+/* ════════════════════════════════════════
+   FORM FIELDS
+════════════════════════════════════════ */
 
 .form-row {
   display: grid;
@@ -146,7 +153,7 @@ main {
 .form-group label {
   font-size: 13px;
   font-weight: 700;
-  color: var(--navy);
+  color: #1c0266;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 7px;
@@ -155,9 +162,9 @@ main {
 .form-group input,
 .form-group select,
 .form-group textarea {
-  font-family: "Urbanist", sans-serif;
+  font-family: "Urbanist";
   font-size: 15px;
-  color: var(--text);
+  color: #333;
   background: #f4f3f9;
   border: 2px solid transparent;
   border-radius: 10px;
@@ -187,7 +194,7 @@ main {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--navy);
+  border-color: #1c0266;
   background: #fff;
 }
 
@@ -210,14 +217,16 @@ main {
   background: #fef2f2;
 }
 
-/*SUBMIT BUTTON — matches your .contact-icon */
+/* ════════════════════════════════════════
+   SUBMIT BUTTON — matches your .contact-icon
+════════════════════════════════════════ */
 
 .submit-btn {
-  font-family: "Urbanist", sans-serif;
+  font-family: "Urbanist";
   font-size: calc(var(--base-font) * 1.125);
   font-weight: 700;
   color: white;
-  background: var(--navy);
+  background: #1c0266;
   border: none;
   border-radius: 10px;
   padding: 15px 40px;
@@ -235,7 +244,7 @@ main {
 .submit-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(28, 2, 102, 0.35);
-  background: var(--navy-light);
+  background: #2a0399;
 }
 
 .submit-btn:active {
@@ -251,7 +260,9 @@ main {
   transform: translateX(4px);
 }
 
-/* ERROR HANDLING*/
+/* ════════════════════════════════════════
+   ERROR + SUCCESS STATES
+════════════════════════════════════════ */
 
 .error-msg {
   display: none;
@@ -274,7 +285,7 @@ main {
 .success-icon {
   width: 64px;
   height: 64px;
-  background: var(--navy);
+  background: #1c0266;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -293,7 +304,7 @@ main {
 .success-msg h3 {
   font-size: 24px;
   font-weight: 800;
-  color: var(--navy);
+  color: #1c0266;
   margin-bottom: 10px;
 }
 
@@ -302,7 +313,9 @@ main {
   color: #666;
 }
 
-/*LOADING SPINNER */
+/* ════════════════════════════════════════
+   LOADING SPINNER
+════════════════════════════════════════ */
 
 .spinner {
   display: none;
@@ -318,7 +331,9 @@ main {
   to { transform: rotate(360deg); }
 }
 
-/* CONTACT LINKS*/
+/* ════════════════════════════════════════
+   CONTACT LINKS — your exact existing style
+════════════════════════════════════════ */
 
 .contact-links {
   display: flex;
@@ -337,7 +352,7 @@ main {
   color: white;
   padding: 10px 20px;
   border-radius: 8px;
-  background: var(--navy);
+  background: #1c0266;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: .2s;
 }
@@ -347,7 +362,9 @@ main {
   color: white;
 }
 
-/*TABLET*/
+/* ════════════════════════════════════════
+   TABLET
+════════════════════════════════════════ */
 
 @media (max-width: 900px) {
   :root { --base-font: 14px; }
@@ -362,7 +379,9 @@ main {
   }
 }
 
-/*MOBILE */
+/* ════════════════════════════════════════
+   MOBILE
+════════════════════════════════════════ */
 
 @media (max-width: 600px) {
   :root { --base-font: 12px; }
@@ -392,25 +411,30 @@ main {
     gap: 12px;
   }
 }
+
 </style>
 </head>
 <body>
 
-<!-- HEADER — update links to match your nav -->
-  <header>
-    <div class="logo"">Magdalena</a>
-    <nav>
-     <a href="index.html">Home</a>
-     <a href="index.html#Projects">Projects</a>
-     <a href="index.html#Experience">Experience</a>
-     <a href=index.html#Skills">How I work</a>
-     <a href="Contact.html" class="active">Contact</a>
-    </nav>
-  </header>
+<!-- ════════════════════════════════════════
+     HEADER — update links to match your nav
+════════════════════════════════════════ -->
+<header>
+  <div class="logo">Your Name</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#Projects">Projects</a>
+    <a href="index.html#Experience">Experience</a>
+    <a href="index.html#Skills">How I work</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+</header>
 
 <main>
 
-<!--CONTACT SECTION -->
+<!-- ════════════════════════════════════════
+     CONTACT SECTION
+════════════════════════════════════════ -->
 <section class="Contact" id="contact">
 
   <h2>Contact</h2>
