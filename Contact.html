@@ -477,17 +477,90 @@ main {
 </section>
 </main>
 
-<div class="contact-form-card">
-  <script charset="utf-8" type="text/javascript" 
-    src="//js-eu1.hsforms.net/forms/embed/v2.js">
-  </script>
-  <script>
-    hbspt.forms.create({
-      portalId: "146860386",
-      formId: "e5ef3292-d675-469f-8527-971d144c4f24",
-      region: "eu1"
-    });
-  </script>
+<script>
+
+const HUBSPOT_PORTAL_ID = '146860386';
+const HUBSPOT_FORM_ID   = 'e5ef3292-d675-469f-8527-971d144c4f24';
+const HIBSPOT_region: "eu1"
+
+const form       = document.getElementById('contactForm');
+const successMsg = document.getElementById('successMsg');
+const errorMsg   = document.getElementById('errorMsg');
+const submitBtn  = document.getElementById('submitBtn');
+const btnText    = document.getElementById('btnText');
+const btnArrow   = document.getElementById('btnArrow');
+const spinner    = document.getElementById('spinner');
+
+// Live validation
+form.querySelectorAll('input, select, textarea').forEach(field => {
+  field.addEventListener('blur', () => {
+    if (field.required && !field.value.trim()) {
+      field.classList.add('invalid');
+      field.classList.remove('valid');
+    } else if (field.value.trim()) {
+      field.classList.add('valid');
+      field.classList.remove('invalid');
+    }
+  });
+  field.addEventListener('input', () => {
+    if (field.classList.contains('invalid') && field.value.trim()) {
+      field.classList.remove('invalid');
+      field.classList.add('valid');
+    }
+  });
+});
+
+// Submit
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  btnText.style.display  = 'none';
+  btnArrow.style.display = 'none';
+  spinner.style.display  = 'block';
+  submitBtn.disabled     = true;
+  errorMsg.style.display = 'none';
+
+  const payload = {
+    fields: [
+      { name: 'firstname', value: document.getElementById('firstName').value.trim() },
+      { name: 'email',     value: document.getElementById('email').value.trim() },
+      { name: 'company',   value: document.getElementById('company').value.trim() },
+      { name: 'message',   value: document.getElementById('message').value.trim() }
+    ],
+    context: {
+      pageUri:  window.location.href,
+      pageName: document.title
+    }
+  };
+
+  try {
+    const res = await fetch(
+      `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`,
+      {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload)
+      }
+    );
+
+    if (res.ok) {
+      form.style.display       = 'none';
+      successMsg.style.display = 'block';
+    } else {
+      throw new Error('HubSpot error ' + res.status);
+    }
+
+  } catch (err) {
+    console.error(err);
+    errorMsg.style.display = 'block';
+    btnText.style.display  = 'inline';
+    btnArrow.style.display = 'inline';
+    spinner.style.display  = 'none';
+    submitBtn.disabled     = false;
+  }
+});
+
+</script>
   
 </div>
 </body>
