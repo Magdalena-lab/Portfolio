@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Your Name</title>
+<link href="https://fonts.googleapis.com/css?family=Urbanist:400,500,600,700,800&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --base-font: 16px;
+  --navy: #1c0266;
+  --navy-light: #2a0399;
+  --bg: #f8f9fa;
+  --text: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Urbanist", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--base-font);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.logo {
+  font-size: calc(var(--base-font) * 1.5625);
+  font-weight: bold;
+}
+
+ nav a {
+  margin-left: calc(var(--base-font) * 1.5625); /* 25px */
+  font-size: calc(var(--base-font) * 1.25);     /* 20px */
+  opacity: .7;
+  position: relative;
+  padding-bottom: 4px;
+  transition: opacity .2s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #1c0266;
+  transition: width .25s;
+}
+
+nav a:hover,
+nav a.active {
+  opacity: 1;
+  font-weight: bold;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+  
+/* MAIN*/
+
+main {
+  padding-top: 120px;
+}
+
+/* CONTACT */
+
+.Contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(var(--base-font) * 3.75) calc(var(--base-font) * 3.125);
+}
+
+.Contact h2 {
+  font-size: calc(var(--base-font) * 3.125);
+  margin-bottom: calc(var(--base-font) * 0.75);
+}
+
+.contact-subtitle {
+  font-size: calc(var(--base-font) * 1.125);
+  color: #666;
+  margin-bottom: calc(var(--base-font) * 2.5);
+  text-align: center;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+/* FORM */
+
+.contact-form-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(28, 2, 102, 0.10);
+  padding: 48px;
+  width: 100%;
+  max-width: 620px;
+  margin-bottom: 40px;
+}
+
+/*FORM FIELD */
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: "Urbanist", sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background: #f4f3f9;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231c0266' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-color: #f4f3f9;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.6;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--navy);
+  background: #fff;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaa;
+}
+
+.form-group input.valid,
+.form-group select.valid,
+.form-group textarea.valid {
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+.form-group input.invalid,
+.form-group select.invalid,
+.form-group textarea.invalid {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+/*SUBMIT BUTTON — matches your .contact-icon */
+
+.submit-btn {
+  font-family: "Urbanist", sans-serif;
+  font-size: calc(var(--base-font) * 1.125);
+  font-weight: 700;
+  color: white;
+  background: var(--navy);
+  border: none;
+  border-radius: 10px;
+  padding: 15px 40px;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(28, 2, 102, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(28, 2, 102, 0.35);
+  background: var(--navy-light);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.btn-arrow {
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.submit-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ERROR HANDLING*/
+
+.error-msg {
+  display: none;
+  background: #fff0f0;
+  border: 1px solid #ffcccc;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #cc0000;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.success-msg {
+  display: none;
+  text-align: center;
+  padding: 48px 32px;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 28px;
+  color: white;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.success-msg h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.success-msg p {
+  font-size: 15px;
+  color: #666;
+}
+
+/*LOADING SPINNER */
+
+.spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* CONTACT LINKS*/
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-icon {
+  font-size: calc(var(--base-font) * 1.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: var(--navy);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: .2s;
+}
+
+.contact-icon:hover {
+  transform: translateY(-3px);
+  color: white;
+}
+
+/*TABLET*/
+
+@media (max-width: 900px) {
+  :root { --base-font: 14px; }
+
+  header {
+    padding: 15px 25px;
+    flex-wrap: wrap;
+  }
+
+  .contact-form-card {
+    padding: 36px 32px;
+  }
+}
+
+/*MOBILE */
+
+@media (max-width: 600px) {
+  :root { --base-font: 12px; }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  nav a {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+
+  .contact-form-card {
+    padding: 28px 20px;
+    border-radius: 14px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contact-links {
+    gap: 12px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER — update links to match your nav -->
+  <header>
+    <a href="#" class="logo">Magdalena</a>
+    <nav>
+      <a href="#" class="active">Home</a>
+      <a href="#Projects">Projects</a>
+      <a href="#Experience">Experience</a>
+      <a href="#Skills">How I work</a>
+      <a href="#Contact">Contact</a>
+    </nav>
+  </header>
+
+<main>
+
+<!-- ════════════════════════════════════════
+     CONTACT SECTION
+════════════════════════════════════════ -->
+<section class="Contact" id="contact">
+
+  <h2>Contact</h2>
+  <p class="contact-subtitle">Have a project in mind or want to talk automation? Drop me a message and I'll get back to you shortly.</p>
+
+  <div class="contact-form-card">
+
+    <!-- Error message -->
+    <div class="error-msg" id="errorMsg">
+      Something went wrong. Please try again or email me directly.
+    </div>
+
+    <!-- FORM -->
+    <form id="contactForm">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">Name</label>
+          <input type="text" id="firstName" name="firstName"
+            placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email"
+            placeholder="your@email.com" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company / Organisation</label>
+        <input type="text" id="company" name="company"
+          placeholder="Where do you work? (optional)">
+      </div>
+
+      <div class="form-group">
+        <label for="interest">What can I help with?</label>
+        <select id="interest" name="interest" required>
+          <option value="" disabled selected>Select a topic</option>
+          <option value="automation">Automation &amp; Zapier Workflows</option>
+          <option value="ai_integration">AI Integration</option>
+          <option value="finance_ops">Finance Operations</option>
+          <option value="sales_ops">Sales Operations / CRM</option>
+          <option value="consulting">General Consulting</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message"
+          placeholder="Tell me about your project or challenge..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">
+        <span id="btnText">Send Message</span>
+        <span class="btn-arrow" id="btnArrow">→</span>
+        <div class="spinner" id="spinner"></div>
+      </button>
+
+    </form>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">✓</div>
+      <h3>Message sent!</h3>
+      <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
+    </div>
+
+  </div>
+
+  <!-- SOCIAL LINKS — update hrefs with your real URLs -->
+  <div class="contact-links">
+    <a href="https://linkedin.com/in/YOUR-PROFILE" class="contact-icon" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+      LinkedIn
+    </a>
+    <a href="mailto:YOUR@EMAIL.COM" class="contact-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="M2 7l10 7 10-7"/>
+      </svg>
+      Email
+    </a>
+    <a href="https://github.com/YOUR-PROFILE" class="contact-icon" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+      </svg>
+      GitHub
+    </a>
+  </div>
+
+</section>
+</main>
+
+<!-- ════════════════════════════════════════
+     HUBSPOT SCRIPT
+     Replace YOUR_PORTAL_ID and YOUR_FORM_ID
+════════════════════════════════════════ -->
+<script>
+
+const HUBSPOT_PORTAL_ID = 'YOUR_PORTAL_ID';
+const HUBSPOT_FORM_ID   = 'YOUR_FORM_ID';
+
+const form       = document.getElementById('contactForm');
+const successMsg = document.getElementById('successMsg');
+const errorMsg   = document.getElementById('errorMsg');
+const submitBtn  = document.getElementById('submitBtn');
+const btnText    = document.getElementById('btnText');
+const btnArrow   = document.getElementById('btnArrow');
+const spinner    = document.getElementById('spinner');
+
+// Live validation
+form.querySelectorAll('input, select, textarea').forEach(field => {
+  field.addEventListener('blur', () => {
+    if (field.required && !field.value.trim()) {
+      field.classList.add('invalid');
+      field.classList.remove('valid');
+    } else if (field.value.trim()) {
+      field.classList.add('valid');
+      field.classList.remove('invalid');
+    }
+  });
+  field.addEventListener('input', () => {
+    if (field.classList.contains('invalid') && field.value.trim()) {
+      field.classList.remove('invalid');
+      field.classList.add('valid');
+    }
+  });
+});
+
+// Submit
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  btnText.style.display  = 'none';
+  btnArrow.style.display = 'none';
+  spinner.style.display  = 'block';
+  submitBtn.disabled     = true;
+  errorMsg.style.display = 'none';
+
+  const payload = {
+    fields: [
+      { name: 'firstname', value: document.getElementById('firstName').value.trim() },
+      { name: 'email',     value: document.getElementById('email').value.trim() },
+      { name: 'company',   value: document.getElementById('company').value.trim() },
+      { name: 'subject',   value: document.getElementById('interest').value },
+      { name: 'message',   value: document.getElementById('message').value.trim() }
+    ],
+    context: {
+      pageUri:  window.location.href,
+      pageName: document.title
+    }
+  };
+
+  try {
+    const res = await fetch(
+      `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`,
+      {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload)
+      }
+    );
+
+    if (res.ok) {
+      form.style.display       = 'none';
+      successMsg.style.display = 'block';
+    } else {
+      throw new Error('HubSpot error ' + res.status);
+    }
+
+  } catch (err) {
+    console.error(err);
+    errorMsg.style.display = 'block';
+    btnText.style.display  = 'inline';
+    btnArrow.style.display = 'inline';
+    spinner.style.display  = 'none';
+    submitBtn.disabled     = false;
+  }
+});
+
+</script>
+</body>
+</html>
