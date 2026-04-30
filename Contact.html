@@ -6,30 +6,30 @@
 <title>Contact — Magdalena</title>
 <link href="https://fonts.googleapis.com/css?family=Urbanist" rel="stylesheet">
 <style>
-
+ 
 :root {
-  --base-font: 16px; /* Desktop base */
+  --base-font: 16px; 
 }
-
+ 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Urbanist";
 }
-
+ 
 body {
   background: #f8f9fa;
   color: #333;
   font-size: var(--base-font);
 }
-
+ 
 a {
   text-decoration: none;
   color: inherit;
 }
-
-
+ 
+ 
 header {
   width: 100%;
   padding: 20px 50px;
@@ -42,12 +42,12 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   z-index: 100;
 }
-
+ 
 .logo {
   font-size: calc(var(--base-font) * 1.5625);
   font-weight: bold;
 }
-
+ 
 nav a {
   margin-left: calc(var(--base-font) * 1.5625);
   font-size: calc(var(--base-font) * 1.25);
@@ -56,7 +56,7 @@ nav a {
   padding-bottom: 4px;
   transition: opacity .2s;
 }
-
+ 
 nav a::after {
   content: "";
   position: absolute;
@@ -67,34 +67,34 @@ nav a::after {
   background: #1c0266;
   transition: width .25s;
 }
-
+ 
 nav a:hover,
 nav a.active {
   opacity: 1;
   font-weight: bold;
 }
-
+ 
 nav a:hover::after,
 nav a.active::after {
   width: 100%;
 }
-
+ 
 main {
   padding-top: 120px;
 }
-
+ 
 .Contact {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: calc(var(--base-font) * 3.75) calc(var(--base-font) * 3.125);
 }
-
+ 
 .Contact h2 {
   font-size: calc(var(--base-font) * 3.125);
   margin-bottom: calc(var(--base-font) * 0.75);
 }
-
+ 
 .contact-subtitle {
   font-size: calc(var(--base-font) * 1.125);
   color: #666;
@@ -103,11 +103,8 @@ main {
   max-width: 500px;
   line-height: 1.6;
 }
-
-/* ════════════════════════════════════════
-   FORM CARD
-════════════════════════════════════════ */
-
+ 
+ 
 .contact-form-card {
   background: white;
   border-radius: 20px;
@@ -117,24 +114,21 @@ main {
   max-width: 620px;
   margin-bottom: 40px;
 }
-
-/* ════════════════════════════════════════
-   FORM FIELDS
-════════════════════════════════════════ */
-
+ 
+ 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-bottom: 16px;
 }
-
+ 
 .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
 }
-
+ 
 .form-group label {
   font-size: 13px;
   font-weight: 700;
@@ -143,7 +137,7 @@ main {
   text-transform: uppercase;
   margin-bottom: 7px;
 }
-
+ 
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -160,7 +154,7 @@ main {
   appearance: none;
   -webkit-appearance: none;
 }
-
+ 
 .form-group select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231c0266' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -169,32 +163,32 @@ main {
   padding-right: 40px;
   cursor: pointer;
 }
-
+ 
 .form-group textarea {
   resize: vertical;
   min-height: 130px;
   line-height: 1.6;
 }
-
+ 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: #1c0266;
   background: #fff;
 }
-
+ 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: #aaa;
 }
-
+ 
 .form-group input.valid,
 .form-group select.valid,
 .form-group textarea.valid {
   border-color: #22c55e;
   background: #f0fdf4;
 }
-
+ 
 .form-group input.invalid,
 .form-group select.invalid,
 .form-group textarea.invalid {
@@ -220,27 +214,27 @@ main {
   gap: 10px;
   margin-top: 8px;
 }
-
+ 
 .submit-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(28, 2, 102, 0.35);
   background: #2a0399;
 }
-
+ 
 .submit-btn:active {
   transform: translateY(0);
 }
-
+ 
 .btn-arrow {
   transition: transform 0.2s;
   display: inline-block;
 }
-
+ 
 .submit-btn:hover .btn-arrow {
   transform: translateX(4px);
 }
-
-
+ 
+ 
 .error-msg {
   display: none;
   background: #fff0f0;
@@ -252,13 +246,13 @@ main {
   margin-bottom: 16px;
   text-align: center;
 }
-
+ 
 .success-msg {
   display: none;
   text-align: center;
   padding: 48px 32px;
 }
-
+ 
 .success-icon {
   width: 64px;
   height: 64px;
@@ -272,25 +266,25 @@ main {
   color: white;
   animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
 }
-
+ 
 @keyframes popIn {
   from { transform: scale(0); opacity: 0; }
   to   { transform: scale(1); opacity: 1; }
 }
-
+ 
 .success-msg h3 {
   font-size: 24px;
   font-weight: 800;
   color: #1c0266;
   margin-bottom: 10px;
 }
-
+ 
 .success-msg p {
   font-size: 15px;
   color: #666;
 }
-
-
+ 
+ 
 .spinner {
   display: none;
   width: 18px;
@@ -300,12 +294,12 @@ main {
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
-
+ 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-
-
+ 
+ 
 .contact-links {
   display: flex;
   justify-content: center;
@@ -313,7 +307,7 @@ main {
   margin-top: 20px;
   flex-wrap: wrap;
 }
-
+ 
 .contact-icon {
   font-size: calc(var(--base-font) * 1.25);
   display: flex;
@@ -327,59 +321,59 @@ main {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: .2s;
 }
-
+ 
 .contact-icon:hover {
   transform: translateY(-3px);
   color: white;
 }
-
-
+ 
+ 
 @media (max-width: 900px) {
   :root { --base-font: 14px; }
-
+ 
   header {
     padding: 15px 25px;
     flex-wrap: wrap;
   }
-
+ 
   .contact-form-card {
     padding: 36px 32px;
   }
 }
-
+ 
 @media (max-width: 600px) {
   :root { --base-font: 12px; }
-
+ 
   header {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
-
+ 
   nav a {
     margin-left: 0;
     margin-right: 15px;
   }
-
+ 
   .contact-form-card {
     padding: 28px 20px;
     border-radius: 14px;
   }
-
+ 
   .form-row {
     grid-template-columns: 1fr;
     gap: 0;
   }
-
+ 
   .contact-links {
     gap: 12px;
   }
 }
-
+ 
 </style>
 </head>
 <body>
-
+ 
 <header>
   <div class="logo">Magdalena</div>
   <nav>
@@ -390,24 +384,24 @@ main {
     <a href="Contact.html" class="active">Contact</a>
   </nav>
 </header>
-
+ 
 <main>
-
+ 
 <section class="Contact" id="contact">
-
+ 
   <h2>Contact</h2>
   <p class="contact-subtitle">Have a project in mind or want to talk automation? Drop me a message and I'll get back to you shortly.</p>
-
+ 
   <div class="contact-form-card">
-
+ 
     <!-- Error message -->
     <div class="error-msg" id="errorMsg">
       Something went wrong. Please try again or email me directly.
     </div>
-
+ 
     <!-- FORM -->
     <form id="contactForm">
-
+ 
       <div class="form-row">
         <div class="form-group">
           <label for="firstName">First Name</label>
@@ -415,9 +409,9 @@ main {
             placeholder="Your name" required>
         </div>
         <div class="form-group">
-          <label for="firstName">Last Name</label>
+          <label for="lastName">Last Name</label>
           <input type="text" id="lastName" name="lastName"
-            placeholder="Your name" required>
+            placeholder="Your surname" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
@@ -425,37 +419,36 @@ main {
             placeholder="your@email.com" required>
         </div>
       </div>
-
+ 
       <div class="form-group">
         <label for="company">Company / Organisation</label>
         <input type="text" id="company" name="company"
           placeholder="Where do you work? (optional)">
       </div>
-
+ 
       <div class="form-group">
         <label for="message">Message</label>
         <textarea id="message" name="message"
           placeholder="Tell me about your project or challenge..." required></textarea>
       </div>
-
+ 
       <button type="submit" class="submit-btn" id="submitBtn">
         <span id="btnText">Send Message</span>
         <span class="btn-arrow" id="btnArrow">→</span>
         <div class="spinner" id="spinner"></div>
       </button>
-
+ 
     </form>
-
+ 
     <!-- SUCCESS -->
     <div class="success-msg" id="successMsg">
       <div class="success-icon">✓</div>
       <h3>Message sent!</h3>
       <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
     </div>
-
+ 
   </div>
-
-  <!-- SOCIAL LINKS -->
+ 
   <div class="contact-links">
     <a href="https://www.linkedin.com/in/magdalenafigeland-olechnowicz/" class="contact-icon" target="_blank">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -478,16 +471,16 @@ main {
       GitHub
     </a>
   </div>
-
+ 
 </section>
 </main>
-
+ 
+<script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+ 
 <script>
-
 const HUBSPOT_PORTAL_ID = '146860386';
 const HUBSPOT_FORM_ID   = 'e5ef3292-d675-469f-8527-971d144c4f24';
-const HIBSPOT_region: "eu1"
-
+ 
 const form       = document.getElementById('contactForm');
 const successMsg = document.getElementById('successMsg');
 const errorMsg   = document.getElementById('errorMsg');
@@ -495,8 +488,7 @@ const submitBtn  = document.getElementById('submitBtn');
 const btnText    = document.getElementById('btnText');
 const btnArrow   = document.getElementById('btnArrow');
 const spinner    = document.getElementById('spinner');
-
-// Live validation
+ 
 form.querySelectorAll('input, select, textarea').forEach(field => {
   field.addEventListener('blur', () => {
     if (field.required && !field.value.trim()) {
@@ -514,21 +506,20 @@ form.querySelectorAll('input, select, textarea').forEach(field => {
     }
   });
 });
-
-// Submit
+ 
 form.addEventListener('submit', async function(e) {
   e.preventDefault();
-
+ 
   btnText.style.display  = 'none';
   btnArrow.style.display = 'none';
   spinner.style.display  = 'block';
   submitBtn.disabled     = true;
   errorMsg.style.display = 'none';
-
+ 
   const payload = {
     fields: [
       { name: 'firstname', value: document.getElementById('firstName').value.trim() },
-      { name: 'lastname', value: document.getElementById('lastName').value.trim() },
+      { name: 'lastname',  value: document.getElementById('lastName').value.trim() },
       { name: 'email',     value: document.getElementById('email').value.trim() },
       { name: 'company',   value: document.getElementById('company').value.trim() },
       { name: 'message',   value: document.getElementById('message').value.trim() }
@@ -538,24 +529,26 @@ form.addEventListener('submit', async function(e) {
       pageName: document.title
     }
   };
-
+ 
   try {
     const res = await fetch(
-      `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`,
+      `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`,
       {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify(payload)
       }
     );
-
+ 
     if (res.ok) {
       form.style.display       = 'none';
       successMsg.style.display = 'block';
     } else {
+      const errBody = await res.json().catch(() => ({}));
+      console.error('HubSpot error', res.status, errBody);
       throw new Error('HubSpot error ' + res.status);
     }
-
+ 
   } catch (err) {
     console.error(err);
     errorMsg.style.display = 'block';
@@ -565,6 +558,10 @@ form.addEventListener('submit', async function(e) {
     submitBtn.disabled     = false;
   }
 });
+</script>
+ 
+</body>
+</html>
 
 </script>
   
