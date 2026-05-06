@@ -112,6 +112,7 @@ h2 {
   background-position: center;
   pointer-events: none;
   user-select: none;
+  webkit-user-drag: none;
 }
 
 .home-content h1 {
