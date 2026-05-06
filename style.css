@@ -115,7 +115,7 @@ h2 {
 .home-content p {
   font-size: calc(var(--base-font) * 1.65);   
   margin-bottom: calc(var(--base-font) * 1.875); 
-  max-width: 62rem; 
+  max-width: 70rem; 
   text-align: left;
 }
 
