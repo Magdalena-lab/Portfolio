@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Lead Enrichment Automation Project</title>
+  <link href='https://fonts.googleapis.com/css?family=Urbanist' rel='stylesheet'>
+
+  <style>
+    body {
+      font-family: 'Urbanist';
+      font-size: 1.5em;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1300px;
+      width: 95%;
+      background: white;
+      padding: 40px;
+      margin: 100px auto 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: justify;
+    }
+
+    h1 {
+      color: #1c0266;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #1c0266;
+      font-size: 1.7em;
+      font-weight: 600;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 1.2em;
+      color: #000;
+      line-height: 1.6;
+      font-style: italic;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+      margin-top: 15px;
+    }
+
+    ul {
+      text-align: justify;
+      margin-left: 20px;
+      line-height: 1.8;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    code {
+      background: #f0eeff;
+      color: #1c0266;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-family: monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Urbanist";
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin-left: 25px;
+      font-size: 20px;
+      opacity: .7;
+      position: relative;
+      padding-bottom: 4px;
+      transition: opacity .2s;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: #1c0266;
+      transition: width .25s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      opacity: 1;
+      font-weight: bold;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    /* Tech pills */
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0 30px;
+    }
+
+    .pill {
+      background: #f0eeff;
+      color: #1c0266;
+      border: 1px solid #c9bfff;
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 0.75em;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── VIDEO EMBED ── */
+    .video-wrap {
+      width: 90%;
+      margin: 40px auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      background: #1c0266;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: white;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .play-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .video-note {
+      font-size: 0.9em;
+      font-weight: 700;
+      opacity: 0.9;
+    }
+
+    .video-sub {
+      font-size: 0.65em;
+      opacity: 0.5;
+    }
+
+    /* ── RECORDING STEPS ── */
+    .recording-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 30px;
+      font-size: 0.85em;
+    }
+
+    .recording-table th {
+      background: #1c0266;
+      color: white;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .recording-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #ece9f7;
+      line-height: 1.5;
+      vertical-align: top;
+    }
+
+    .recording-table tr:nth-child(even) td {
+      background: #f7f5ff;
+    }
+
+    .recording-table tr:hover td {
+      background: #ede9fc;
+    }
+
+    .rec-num { color: #1c0266; font-weight: bold; font-family: monospace; }
+    .rec-time { color: #7c3aed; font-style: italic; font-family: monospace; font-size: 0.9em; white-space: nowrap; }
+
+    /* ── FLOW DIAGRAM ── */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+      margin: 40px auto;
+      gap: 0;
+    }
+
+    .flow-step {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+    }
+
+    .flow-num {
+      background: #1c0266;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1em;
+      font-weight: 800;
+    }
+
+    .flow-body {
+      background: white;
+      padding: 14px 20px;
+      border: 1px solid #ece9f7;
+      border-left: none;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .flow-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 5px;
+    }
+
+    .flow-badge {
+      background: #f0eeff;
+      color: #1c0266;
+      border: 1px solid #c9bfff;
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 0.6em;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .flow-name {
+      font-size: 0.85em;
+      font-weight: 700;
+      color: #1c0266;
+    }
+
+    .flow-desc {
+      font-size: 0.75em;
+      opacity: 0.6;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .flow-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .flow-pill {
+      background: #f0eeff;
+      color: #1c0266;
+      border: 1px solid #c9bfff;
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 0.6em;
+      font-weight: 600;
+    }
+
+    .flow-arrow {
+      text-align: center;
+      color: #1c0266;
+      font-size: 0.7em;
+      padding: 4px 0;
+      opacity: 0.5;
+    }
+
+    /* stats row */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin: 30px 0 10px;
+    }
+
+    .stat-box {
+      background: #1c0266;
+      color: white;
+      border-radius: 10px;
+      padding: 18px 24px;
+      text-align: center;
+      min-width: 130px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .stat-num {
+      font-size: 1.6em;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.6em;
+      opacity: 0.8;
+      font-weight: 600;
+    }
+
+    /* ── CASE STUDY ── */
+    .case-block {
+      display: grid;
+      grid-template-columns: 6px 1fr;
+      gap: 0 20px;
+      margin-bottom: 28px;
+    }
+
+    .case-content {
+      background: #f7f5ff;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      border: 1px solid #ece9f7;
+      border-left: none;
+    }
+
+    .case-tag {
+      display: inline-block;
+      background: #f0eeff;
+      color: #1c0266;
+      border: 1px solid #c9bfff;
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 0.6em;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .case-content h3 {
+      font-size: 0.85em;
+      text-align: left;
+      margin-bottom: 8px;
+      color: #1c0266;
+    }
+
+    .case-content p {
+      font-size: 0.8em;
+      margin: 0;
+      line-height: 1.7;
+      opacity: 0.75;
+    }
+
+    .metrics-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .metric {
+      background: #f0eeff;
+      border: 1px solid #c9bfff;
+      border-radius: 8px;
+      padding: 10px 16px;
+      text-align: center;
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .metric-num {
+      font-size: 1.1em;
+      font-weight: 800;
+      color: #1c0266;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .metric-label {
+      font-size: 0.55em;
+      opacity: 0.6;
+      font-weight: 600;
+    }
+
+    /* divider */
+    .divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 30px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="../index.html" class="logo">Magdalena</a>
+    <nav>
+      <a href="../index.html">Home</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <h1>Lead Enrichment Automation</h1>
+
+    <p>
+      This project is a low-code automation pipeline built in Zapier that triggers
+      the moment a lead submits a website form. It extracts the company domain from their email, passes it to
+      OpenAI GPT-4for deep enrichment, parses the structured JSON response with a
+      JavaScript code step, and writes a lead score, summary, pain points, lifecycle stage, and
+      personalised outreach opener directly into HubSpot CRM. Lastly creates a follow-up
+      task and send notification to the sales representative Gmail. No manual steps needed. 
+    </p>
+
+    <div class="tech-pills">
+      <span class="pill">Zapier</span>
+      <span class="pill">OpenAI GPT-4</span>
+      <span class="pill">HubSpot CRM</span>
+      <span class="pill">Gmail</span>
+      <span class="pill">Google Sheets</span>
+      <span class="pill">JavaScript</span>
+      <span class="pill">JSON</span>
+    </div>
+
+    <h2>Demo</h2>
+    <h3>Watch the full pipeline run from form submission to HubSpot update</h3>
+
+    <video controls style="width: 90%; display: block; margin: 40px auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);">
+    <source src="..\assets\AI Enrichment Lead workflow .mp4" type="video/mp4">
+    </video>
+  
+    <h2>Automation Flow</h2>
+    <h3>7 steps, 0 manual touches, data flows from form submission to sales-ready lead automatically</h3>
+
+    <div class="flow">
+
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div class="flow-body">
+          <div class="flow-header">
+            <span class="flow-badge">Google Sheets / HubSpot</span>
+            <span class="flow-name">Trigger -  New contact</span>
+          </div>
+          <div class="flow-desc">Fires when a lead submits the website form. Email is a required field.</div>
+          <div class="flow-pills">
+            <span class="flow-pill">contact_email</span>
+            <span class="flow-pill">company_name</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow">▼</div>
+
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div class="flow-body">
+          <div class="flow-header">
+            <span class="flow-badge">Zapier Formatter</span>
+            <span class="flow-name">Extract Domain from Email</span>
+          </div>
+          <div class="flow-desc">Splits email on <code>@</code> to extract the company domain.</div>
+          <div class="flow-pills">
+            <span class="flow-pill">magda@company.com → company.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow">▼</div>
+
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div class="flow-body">
+          <div class="flow-header">
+            <span class="flow-badge">AI by zapier - OpenAI model gpt-40-mini</span>
+            <span class="flow-name">AI Enrichment - Analyse + Score</span>
+          </div>
+          <div class="flow-desc">Passes domain to a structured prompt. Returns a JSON object with requested Lead information.</div>
+          <div class="flow-pills">
+            <span class="flow-pill">summary</span>
+            <span class="flow-pill">pain_points[ ]</span>
+            <span class="flow-pill">lead_score /10</span>
+            <span class="flow-pill">personalized_opener</span>
+            <span class="flow-pill">lifecycle_stage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow">▼</div>
+
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <div class="flow-body">
+          <div class="flow-header">
+            <span class="flow-badge">Code by Zapier - JavaScript</span>
+            <span class="flow-name">Parse JSON + Map Fields</span>
+          </div>
+          <div class="flow-desc">
+            Uses <code>JSON.parse(input_data["AI Output"])</code> to extract individual fields from the raw AI response string.
+          </div>
+          <div class="flow-pills">
+            <span class="flow-pill">all fields individually mappable</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow">▼</div>
+
+      <div class="flow-step">
+        <div class="flow-num">05</div>
+        <div class="flow-body">
+          <div class="flow-header">
+            <span class="flow-badge">HubSpot</span>
+            <span class="flow-name">Update Contact</span>
+          </div>
+          <div class="flow-desc">Writes enriched fields to the HubSpot contact record automatically.</div>
+          <div class="flow-pills">
+            <span class="flow-pill">lead score → custom filed - AI score</span>
+            <span class="flow-pill">lead_score_reason → custom filed - AI Lead score reason</span>
+            <span class="flow-pill">company_name → Company name </span>
+            <span class="flow-pill">company_size → Company size </span>
+            <span class="flow-pill">pain points → custom filed - AI Pain Points</span>
+            <span class="flow-pill">description → Description of first engagement </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow">▼</div>
+
+      <div class="flow-step">
+        <div class="flow-num">06</div>
+        <div class="flow-body">
+          <div class="flow-header">
+            <span class="flow-badge">HubSpot</span>
+            <span class="flow-name">Create Task</span>
+          </div>
+          <div class="flow-desc">Auto-creates a follow-up task assigned to the sales rep in HubSpot.</div>
+          <div class="flow-pills">
+            <span class="flow-pill">title: Follow up</span>
+            <span class="flow-pill">notes: Company name, Score, personalized_opener</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow">▼</div>
+
+      <div class="flow-step">
+        <div class="flow-num">07</div>
+        <div class="flow-body">
+          <div class="flow-header">
+            <span class="flow-badge">Gmail</span>
+            <span class="flow-name">Notify Sales Rep</span>
+          </div>
+          <div class="flow-desc">Sends an internal notification email</div>
+          <div class="flow-pills">
+            <span class="flow-pill">instant alert</span>
+            <span class="flow-pill"> message: "There is new task scheduled to follow up."</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num">7</div><div class="stat-label">Automated Steps</div></div>
+      <div class="stat-box"><div class="stat-num">~30s</div><div class="stat-label">Form to CRM</div></div>
+      <div class="stat-box"><div class="stat-num">0</div><div class="stat-label">Manual Touches</div></div>
+      <div class="stat-box"><div class="stat-num">/10</div><div class="stat-label">AI Lead Score</div></div>
+    </div>
+
+    <hr class="divider">
+
+    <h2>Process Prototype</h2>
+    <h3>Lead intake enrichment and routing workflow designed for CRM operations</h3>
+
+    <div class="case-block">
+      <div class="case-bar"></div>
+      <div class="case-content">
+        <span class="case-tag">Context</span>
+        <h3>Exploring a more structured lead intake process</h3>
+        <p>
+          I built this project to explore how lead intake could be handled in a more structured way before the first sales interaction.
+          In many teams, a new form submission often requires manual research before anyone can qualify or prioritise the lead.
+          Company context, likely needs, and follow-up actions can depend on whoever picks up the lead first, 
+          which can slow response time and create inconsistent CRM data.
+    </p>
+  </div>
+      
+    </div>
+
+    <div class="case-block">
+      <div class="case-bar"></div>
+      <div class="case-content">
+        <span class="case-tag">Approach</span>
+        <h3>I designed a 7-step enrichment and routing workflow</h3>
+        <p>
+        I built this workflow in Zapier with HubSpot as the destination system. 
+        It starts when a form is submitted. The workflow extracts the company domain from the contact email, 
+        enriches the lead with company context, generates a lead score and maps the output into CRM fields. 
+        The enriched record is then written to HubSpot, a follow-up task is created, and the sales team receives a notification with the lead context ready for first contact.
+        </p>
+      </div>
+    </div>
+
+    <div class="case-block">
+      <div class="case-bar"></div>
+      <div class="case-content">
+        <span class="case-tag">Outcome</span>
+        <h3>Lead context prepared in under 30 seconds</h3>
+        <p>
+          From form submission to an enriched HubSpot record, the workflow completes in under 30 seconds.
+          The project shows how enrichment, qualification support, and task creation can happen automatically at the point of lead capture.
+          Instead of starting with manual research, sales receives a lead record with structured context already in place.
+        </p>
+        <div class="metrics-row">
+          <div class="metric"><div class="metric-num">~30s</div><div class="metric-label">Form to CRM</div></div>
+          <div class="metric"><div class="metric-num">0 min</div><div class="metric-label">Manual research</div></div>
+          <div class="metric"><div class="metric-num">7</div><div class="metric-label">Automated steps</div></div>
+          <div class="metric"><div class="metric-num">/10</div><div class="metric-label">AI lead score</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-block">
+      <div class="case-bar"></div>
+      <div class="case-content">
+        <span class="case-tag">Stack</span>
+        <h3>Tools and technologies used</h3>
+        <p>
+          Built entirely with no-code and low-code tools. A single JavaScript step handles
+          JSON parsing and error handling with fallback defaults on every field.
+        </p>
+        <div style="margin-top: 14px;">
+          <div class="tech-pills" style="justify-content: flex-start; margin: 0;">
+            <span class="pill">Zapier</span>
+            <span class="pill">OpenAI GPT-4</span>
+            <span class="pill">HubSpot CRM</span>
+            <span class="pill">Gmail</span>
+            <span class="pill">Google Sheets</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">JSON</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align: center; font-size: 1.0em; color: #888; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
+      Lead Enrichment Automation · Built with Zapier + OpenAI + HubSpot · No-code / Low-code Pipeline
+    </p>
+
+  </div>
+</body>
+</html>
