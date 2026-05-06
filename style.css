@@ -99,11 +99,14 @@ h2 {
 }
 
 .home-img img {
-  width: 290px;
-  height: 450px;
+  width: 320px;
+  height: 500px;
   object-fit: cover;
   border-radius: 100px;
   border: 4px solid #ddd;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .home-content h1 {
@@ -115,7 +118,7 @@ h2 {
 .home-content p {
   font-size: calc(var(--base-font) * 1.65);   
   margin-bottom: calc(var(--base-font) * 1.875); 
-  max-width: 70rem; 
+  max-width: 75rem; 
   text-align: left;
 }
 
