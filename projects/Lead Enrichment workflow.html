@@ -466,12 +466,12 @@
     <h1>Lead Enrichment Automation</h1>
 
     <p>
-      This project is a low-code automation pipeline built in Zapier that triggers
-      the moment a lead submits a website form. It extracts the company domain from their email, passes it to
-      OpenAI GPT-4for deep enrichment, parses the structured JSON response with a
-      JavaScript code step, and writes a lead score, summary, pain points, lifecycle stage, and
-      personalised outreach opener directly into HubSpot CRM. Lastly creates a follow-up
-      task and send notification to the sales representative Gmail. No manual steps needed. 
+      This project is a low-code automation pipeline built in Zapier that triggers when a lead submits a website form. 
+      The workflow extracts the company domain from the email address, enriches the lead with company context using OpenAI GPT-4, 
+      parses the structured JSON response with a JavaScript step, and writes the information into HubSpot CRM.</p>
+      <p>The workflow also creates a follow-up task and sends a notification to the sales representative, preparing the lead for review before first contact.</p>
+      <p>The purpose of the workflow is to reduce repetitive manual research and provide structured lead context directly inside the CRM.
+      Final validation of the information remains with the sales representative.
     </p>
 
     <div class="tech-pills">
@@ -492,7 +492,7 @@
     </video>
   
     <h2>Automation Flow</h2>
-    <h3>7 steps, 0 manual touches, data flows from form submission to sales-ready lead automatically</h3>
+    <h3>7-step enrichment and lead routing workflow</h3>
 
     <div class="flow">
 
@@ -503,7 +503,7 @@
             <span class="flow-badge">Google Sheets / HubSpot</span>
             <span class="flow-name">Trigger -  New contact</span>
           </div>
-          <div class="flow-desc">Fires when a lead submits the website form. Email is a required field.</div>
+          <div class="flow-desc">The workflow starts when a lead submits the website form through Google Sheets or HubSpot.</div>
           <div class="flow-pills">
             <span class="flow-pill">contact_email</span>
             <span class="flow-pill">company_name</span>
@@ -625,7 +625,7 @@
     <div class="stats-row">
       <div class="stat-box"><div class="stat-num">7</div><div class="stat-label">Automated Steps</div></div>
       <div class="stat-box"><div class="stat-num">~30s</div><div class="stat-label">Form to CRM</div></div>
-      <div class="stat-box"><div class="stat-num">0</div><div class="stat-label">Manual Touches</div></div>
+      <div class="stat-box"><div class="stat-num">Human-reviewed</div><div class="stat-label">Final qualification</div></div>
       <div class="stat-box"><div class="stat-num">/10</div><div class="stat-label">AI Lead Score</div></div>
     </div>
 
@@ -641,7 +641,7 @@
         <h3>Exploring a more structured lead intake process</h3>
         <p>
           I built this project to explore how lead intake could be handled in a more structured way before the first sales interaction.
-          In many teams, a new form submission often requires manual research before anyone can qualify or prioritise the lead.
+          In many teams, a new form submission often requires manual research before the sales team can review, prioritise, or prepare outreach.
           Company context, likely needs, and follow-up actions can depend on whoever picks up the lead first, 
           which can slow response time and create inconsistent CRM data.
     </p>
@@ -671,7 +671,7 @@
         <p>
           From form submission to an enriched HubSpot record, the workflow completes in under 30 seconds.
           The project shows how enrichment, qualification support, and task creation can happen automatically at the point of lead capture.
-          Instead of starting with manual research, sales receives a lead record with structured context already in place.
+         Instead of starting with fully manual research, sales receives a structured lead record with initial context already prepared for validation and follow-up.
         </p>
         <div class="metrics-row">
           <div class="metric"><div class="metric-num">~30s</div><div class="metric-label">Form to CRM</div></div>
